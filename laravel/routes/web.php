@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 */
 Route::get('/', function(){
     return view('home');
-});
+})->name('home');
 
 // Route::get('unicode', function(){
 //     return view('form');
@@ -72,7 +72,7 @@ Route::prefix('admin')->group(function () {
         return view('form');
     });
 
-    Route::prefix('products')->group(function () {
+    Route::prefix('products')->middleware('checkpermission')->group(function () {
         Route::get('/', function () {
             return 'Danh sách sản phẩm';
         });

@@ -1,0 +1,36 @@
+:root,
+#root {
+  --primary-100: #edeffd;
+  --primary-200: #dbdffb;
+  --primary-300: #4d5feb;
+  --primary-400: #3e4cbc;
+  --primary-500: #171c46;
+  --secondary-100: #fceaec;
+  --secondary-200: #f8d5d8;
+  --secondary-300: #de2c3d;
+  --secondary-400: #b22331;
+  --secondary-500: #430d12;
+  --tertiary-100: #e6f3f1;
+  --tertiary-200: #cde7e4;
+  --tertiary-300: #048576;
+  --tertiary-400: #036a5e;
+  --tertiary-500: #012823;
+  --states-100: #f2342b;
+  --states-200: #ffaa29;
+  --states-300: #66bd50;
+  --gray-100: #f0f1f3;
+  --gray-200: #e1e4e6;
+  --gray-300: #c3c8cd;
+  --gray-400: #6a7682;
+  --gray-500: #353b41;
+  --black: #000;
+  --white: #fff;
+  --transparent: transparent;
+  --swiper-pagination-bottom: 10px;
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 10px;
+  --swiper-pagination-bullet-inactive-color: var(--primary-200);
+  --swiper-navigation-size: 23px;
+}
+
+$themeColor: var(--primary-100) !default;
