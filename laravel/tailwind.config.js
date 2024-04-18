@@ -150,16 +150,6 @@ export default {
           '@screen lg': {
             maxWidth: '1100px',
           }
-        },
-        '.row': {
-          display: 'flex',
-          flexWrap: 'wrap',
-          marginLeft: '-16px',
-          marginRight: '-16px',
-        },
-        '.col': {
-          paddingLeft: '16px',
-          paddingRight: '16px',
         }
       })
     }

@@ -1,3 +1,9 @@
+@import 'components/header.scss';
+@import 'components/menu.scss';
+@import 'libs/font-iconmoon.scss';
+@import 'base/variables.scss';
+@import 'base/base.scss';
+@import 'base/custom.scss';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

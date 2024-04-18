@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,77 +14,33 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::get('/', function(){
-    return view('home');
-})->name('home');
+    return view('index');
+})->name('index');
 
-// Route::get('unicode', function(){
-//     return view('form');
-//     // return 'phương thức get của path /unicode';
-// });
+Route::get('dang-ky-dang-nhap', function(){
+    return view('dang-ky-dang-nhap');
+})->name('dang-ky-dang-nhap');
 
-// Route::post('unicode', function(){
-//     return 'phương thức post của path /unicode';
-// });
+//client routes
+Route::prefix('categories')->group(function(){
 
-// Route::put('unicode', function(){
-//     return 'phương thức put của path /unicode';
-// });
+    //danh sách chuyên mục
+    Route::get('/', [CategoriesController::class, 'index']);
 
-// Route::delete('unicode', function(){
-//     return 'phương thức delete của path /unicode';
-// });
+    //Lấy chi tiết 1 chuyên mục (áp dụng show form sửa chuyên mục)
+    Route::get('edit/{id}', [CategoriesController::class, 'getCategory']);
 
-// Route::patch('unicode', function(){
-//     return 'phương thức patch của path /unicode';
-// });
+    //xử lý update chuyên mục
+    Route::post('/edit/{id}', [CategoriesController::class, 'updateCategory']);
 
-// Route::match(['get', 'post'], 'unicode', function () {
-//     return $_SERVER['REQUEST_METHOD'];
-// });
+    //hiển thị form add dữ liệu
+    Route::get('/add', [CategoriesController::class, 'addCategory']);
 
-// Route::any('unicode', function (Request $request) {
-//     return $request->method();
-//     //return $_SERVER['REQUEST_METHOD'];
-// });
+    //xử lý thêm chuyên mục
+    Route::post('/add', [CategoriesController::class, 'handleAddCategory']);
 
-// Route::get('show-form', function () {
-//     return view('form');
-// });
-
-// // Route::redirect('unicode', 'show-form');
-
-// Route::view('show-form', 'form');
-
-Route::prefix('admin')->group(function () {
-
-    Route::get('tin-tuc/{id?}/{slug?}.html', function ($id=null, $slug=null) {
-        $content = 'Phương thức Get của path /unicode với tham số: ';
-        $content.='id = '.$id.'<br>';
-        $content.='slug = '.$slug;
-        return $content;
-    })->where('id', '\d+')->where('slug', '.+')->name('admin.tintuc');
-
-    Route::get('unicode', function(){
-        return 'phương thức get của path /unicode';
-    });
-    
-    Route::get('show-form', function () {
-        return view('form');
-    });
-
-    Route::prefix('products')->middleware('checkpermission')->group(function () {
-        Route::get('/', function () {
-            return 'Danh sách sản phẩm';
-        });
-        Route::get('add', function () {
-            return 'Thêm sản phẩm';
-        });
-        Route::get('edit', function () {
-            return 'Sửa sản phẩm';
-        });
-        Route::get('delete', function () {
-            return 'Xóa sản phẩm';
-        });
-    });
+    //xóa thêm chuyên mục
+    Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory']);
 });

@@ -5,3 +5,5 @@
   C2: mở terminal tại thư mục chính (tên-dự-án) gõ: php artisan serve
 
 Tạo middleware: php artisan make:middleware CheckPermission
+
+Tạo controller: php artisan make:controller CategoriesController
