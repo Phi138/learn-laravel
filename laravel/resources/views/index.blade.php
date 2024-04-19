@@ -19,7 +19,7 @@
       <div class="header-mobile row items-center justify-between flex-wrap">
         <div class="col col-9 col-lg-12">
           <a id="header-logo" class="navbar-brand header-logo w-full inline-block align-middle" href="/">
-            <img src="images/logo.svg" class="w-full" alt="TailWind css starter" width="150" height="39" />
+            <img src="images/logo.png" class="w-full" alt="TailWind css starter" width="150" height="39" />
           </a>
         </div>
         <div class="col col-3 text-right lg:hidden">
@@ -38,7 +38,7 @@
     <li class="menu-item active has-sub relative lg:static mega-dropdown mx-5 mb-7 xl:px-10 lg:my-15">
       <a href="javascript:;" role="button" aria-expanded="false" aria-controls="dropdown-menu-1"
         class="block relative lg:pr-8">
-        Universal
+        THỜI TRANG NỮ
         <span class="icon-arrow-menu absolute top-3 right-0 block"><span
             class="icomoon icon-chevron-down block"></span></span>
       </a>
@@ -82,12 +82,12 @@
       </div>
     </li>
     <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-      <a href="page.html" class="main-link">Page</a>
+      <a href="page.html" class="main-link">BỘ SƯU TẬP</a>
     </li>
     <li class="menu-item has-sub mx-5 relative lg:static xl:px-10 mb-7 lg:my-15">
       <a href="javascript:;" role="button" aria-expanded="false" aria-controls="dropdown-menu-3"
         class="block relative lg:pr-8">
-        News
+        PHỤ KIỆN
         <span class="icon-arrow-menu absolute top-3 right-0 block"><span
             class="icomoon icon-chevron-down block"></span></span>
       </a>
@@ -119,10 +119,10 @@
       </div>
     </li>
     <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-      <a target="_blank" href="https://tailwindui.html.box.9thwonder.digital/" class="main-link">Components</a>
+      <a target="_blank" href="" class="main-link">SHOP THE LOOK</a>
     </li>
     <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-      <a href="ADA.html" class="main-link">ADA</a>
+      <a href="ADA.html" class="main-link">ELISE STORY</a>
     </li>
   </ul>
 </nav>
@@ -150,15 +150,15 @@
             <!-- Slides -->
             <div class="swiper-slide">
               <img fetchpriority="high" class="h-50vh w-full object-cover object-center" alt="name image"
-                src="https://cdn.agilitycms.com/9th-wonder/MediaGroupings/15/nha-trang-1.jpg">
+                src="images/slide/slide-1.jpg">
             </div>
             <div class="swiper-slide">
               <img class="h-50vh w-full object-cover object-center" alt="name image"
-                src="https://cdn.agilitycms.com/9th-wonder/MediaGroupings/15/nha-trang-1.jpg">
+                src="images/slide/slide-2.jpg">
             </div>
             <div class="swiper-slide">
               <img class="h-50vh w-full object-cover object-center" alt="name image"
-                src="https://cdn.agilitycms.com/9th-wonder/MediaGroupings/15/nha-trang-1.jpg">
+                src="images/slide/slide-3.jpg">
             </div>
           </div>
           <!-- If we need pagination -->
