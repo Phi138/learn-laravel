@@ -22,22 +22,23 @@ class CategoriesController extends Controller
 
     //cập nhật 1 chuyên mục (Phương thức post)
     public function updateCategory($id){
-        return 'submit sửa chuyên mục';
+        return 'submit sửa chuyên mục: ' . $id;
     }
 
     //show form thêm dữ liệu (Phương thức get)
     public function addCategory(){
-            return 'form thêm chuyên mục';
+        return view('clients/categories/add');
     }
 
     //thêm dữ liệu vào chuyên mục (Phương thức post)
     public function handleAddCategory(){
-
+        return redirect(route('categories.add'));
+        //return 'Submit thêm chuyên mục';
     }
 
     //xóa dữ liệu (Phương thức delete)
     public function deleteCategory($id){
-
+        return 'Submit xóa chuyên mục' . $id;
     }
 
 }
