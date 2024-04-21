@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +19,20 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::get('/', function(){
-    return view('index');
-})->name('index');
+// Route::get('/', function(){
+//     return view('index');
+// })->name('index');
+
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
 })->name('dang-ky-dang-nhap');
 
 //client routes
-Route::get('/', function(){
-    return '<h1>TRANG CHỦ UNICODE</h1>';
-})->name('home');
+// Route::get('/', function(){
+//     return '<h1>TRANG CHỦ UNICODE</h1>';
+// })->name('home');
 
 Route::prefix('categories')->group(function(){
 
@@ -57,4 +61,9 @@ Route::prefix('categories')->group(function(){
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index']);
     Route::resource('products', ProductController::class)->middleware('auth.admin.product');
+});
+
+//Users Route
+Route::prefix('users')->group(function(){
+    Route::get('/', [UsersController::class, 'index']);
 });
