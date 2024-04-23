@@ -7,4 +7,6 @@
 Tạo middleware: php artisan make:middleware CheckPermission
 
 Tạo controller: php artisan make:controller CategoriesController
-  php artisan make:controller CategoriesController Admin/ProductController --resource
+  php artisan make:controller Admin/ProductController --resource
+
+Tạo model: php artisan make:model Users

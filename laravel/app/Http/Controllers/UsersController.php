@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 use DB;
 
+use App\Models\Users;
+
 class UsersController extends Controller
 {
     public function index(){
         $title = 'Danh sách người dùng';
 
-        $users = DB::select('SELECT * FROM users ORDER BY created_at DESC');
-        return view('clients.users.lists', compact('title', 'users'));
+        $users = new Users();
+
+        $usersList = $users->getAllUsers();
+        return view('clients.users.lists', compact('title', 'usersList'));
     }
 }

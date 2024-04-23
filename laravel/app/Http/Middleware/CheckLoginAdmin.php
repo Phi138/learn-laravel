@@ -18,12 +18,12 @@ class CheckLoginAdmin
         //echo 'Middleware request';
 
         if(!$this->isLogin()){
-            return redirect(route('home'));
+            return redirect(route('dang-ky-dang-nhap'));
         }
         return $next($request);
     }
 
     public function isLogin(){
-        return false;
+        return true;
     }
 }

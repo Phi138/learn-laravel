@@ -4,6 +4,7 @@
 @import 'base/variables.scss';
 @import 'base/base.scss';
 @import 'base/custom.scss';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

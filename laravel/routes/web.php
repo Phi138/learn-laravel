@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\SanPhamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +61,14 @@ Route::prefix('categories')->group(function(){
 //Admin Route
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
     Route::get('/', [DashboardController::class, 'index']);
-    Route::resource('products', ProductController::class)->middleware('auth.admin.product');
+    // Route::resource('products', ProductController::class)->middleware('auth.admin.product');
+
+    //san-pham
+    Route::prefix('san-pham')->name('san-pham.')->group(function(){
+        Route::get('/', [SanPhamController::class, 'index'])->name('index');
+        Route::get('/them', [SanPhamController::class, 'create'])->name('create');
+        Route::post('/them', [SanPhamController::class, 'store'])->name('store');
+    });
 });
 
 //Users Route
