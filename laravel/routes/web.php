@@ -68,6 +68,9 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::get('/', [SanPhamController::class, 'index'])->name('index');
         Route::get('/them', [SanPhamController::class, 'create'])->name('create');
         Route::post('/them', [SanPhamController::class, 'store'])->name('store');
+        Route::get('/sua/{id}', [SanPhamController::class, 'edit'])->name('edit');
+        Route::post('/update', [SanPhamController::class, 'update'])->name('update');
+        Route::get('/xoa/{id}', [SanPhamController::class, 'destroy'])->name('delete');
     });
 });
 

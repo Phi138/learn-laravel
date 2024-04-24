@@ -28,7 +28,8 @@ class SanPhamController extends Controller
      */
     public function create()
     {
-        return view('admin.san-pham.them');
+        $title = 'Thêm sản phẩm';
+        return view('admin.san-pham.them', compact('title'));
     }
 
     /**
@@ -38,12 +39,13 @@ class SanPhamController extends Controller
     {
         $request->validate([
             'ten_sp' => 'required|min:5',
-            // 'email' => 'required|email'
+            // 'email' => 'required|email|unique:sanPham'
         ], [
             'ten_sp.required' => 'Tên sản phẩm bắt buộc phải nhập',
             'ten_sp.min' => 'Tên sản phẩm phải từ :min ký tự trở lên',
             // 'email.required' => 'Email bắt buộc phải nhập',
-            // 'email.email' => 'Email không đúng định dạng'
+            // 'email.email' => 'Email không đúng định dạng',
+            // 'email.unique' => 'Email đã tồn tại trên hệ thống'
         ]);
         $data = [
             '1',
@@ -75,17 +77,55 @@ class SanPhamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
-        //
+        $title = 'Cập nhật sản phẩm';
+        if(!empty($id)){
+            $sanPhamDetail = $this->sanPham->getDetail($id);
+            if(!empty($sanPhamDetail[0])){
+                $request->session()->put('id', $id);
+                $sanPhamDetail = $sanPhamDetail[0];
+            } else {
+                return redirect()->route('san-pham.index')->with('msg', 'Sản phẩm không tồn tại');
+            }
+        } else {
+            return redirect()->route('san-pham.index')->with('msg', 'Liên kết không tồn tại');
+        }
+        return view('admin.san-pham.sua', compact('title', 'sanPhamDetail'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $id = session('id');
+        if(empty($id)){
+            return back()->with('msg', 'Liên kết không tồn tại');
+        }
+        $request->validate([
+            'ten_sp' => 'required|min:5',
+            // 'email' => 'required|email|unique:sanPham,email,'.$id
+        ], [
+            'ten_sp.required' => 'Tên sản phẩm bắt buộc phải nhập',
+            'ten_sp.min' => 'Tên sản phẩm phải từ :min ký tự trở lên',
+            // 'email.required' => 'Email bắt buộc phải nhập',
+            // 'email.email' => 'Email không đúng định dạng',
+            // 'email.unique' => 'Email đã tồn tại trên hệ thống'
+        ]);
+        $data = [
+            $request->ten_sp,
+            '',
+            123456789,
+            '',
+            60,
+            date('Y-m-d H:i:s'),
+            '',
+            '',
+            123456789
+        ];
+        $this->sanPham->updateSanPham($data, $id);
+        return back()->with('msg','Cập nhật sản phẩm thành công');
     }
 
     /**
@@ -93,6 +133,21 @@ class SanPhamController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if(!empty($id)){
+            $sanPhamDetail = $this->sanPham->getDetail($id);
+            if(!empty($sanPhamDetail[0])){
+                $deleteStatus = $this->sanPham->deleteSanPham($id);
+                if ($deleteStatus){
+                    $msg = 'Xóa sản phẩm thành công';
+                } else {
+                    $msg = 'Bạn không thể xóa sản phẩm lúc này. Vui lòng thử lại sau!';
+                }
+            } else {
+                $msg = 'Sản phẩm không tồn tại';
+            }
+        } else {
+            $msg = 'Liên kết không tồn tại';
+        }
+        return redirect()->route('san-pham.index')->with('msg', $msg);
     }
 }

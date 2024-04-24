@@ -79,6 +79,11 @@
             </ul>
             <div id="clock"></div>
         </div>
+
+        @if (session('msg'))
+          <div class="alert alert-success">{{session('msg')}}</div>
+        @endif
+
         <div class="row">
             <div class="col-md-12">
                 <div class="tile">
@@ -153,8 +158,10 @@
                               <td>{{$sanPham->ds_kich_thuoc}}</td>
                               <td>{{$sanPham->ten_danh_muc}}</td>
                               <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button>
+                                {{-- <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button> --}}
+                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('san-pham.delete', ['id'=>$sanPham->ma_sp])}}"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i></button></a>
+                                <a href="{{route('san-pham.edit', ['id'=>$sanPham->ma_sp])}}"><button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fas fa-edit"></i></button></a>
                               </td>
                             </tr>
                             @endforeach
@@ -298,7 +305,7 @@ MODAL
       }
     }
     </script>
-    <script>
+    {{-- <script>
         function deleteRow(r) {
             var i = r.parentNode.parentNode.rowIndex;
             document.getElementById("myTable").deleteRow(i);
@@ -324,7 +331,7 @@ MODAL
             $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
             e.stopImmediatePropagation();
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

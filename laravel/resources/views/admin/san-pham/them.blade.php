@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-  <title>Thêm sản phẩm | Quản trị Admin</title>
+  @section('title', $title)
+  <title>@yield('title') | Quản trị Admin</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -190,13 +191,13 @@
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb">
         <li class="breadcrumb-item">Danh sách sản phẩm</li>
-        <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+        <li class="breadcrumb-item"><a href="#">@yield('title')</a></li>
       </ul>
     </div>
     <div class="row">
       <div class="col-md-12">
         <div class="tile">
-          <h3 class="tile-title">Tạo mới sản phẩm</h3>
+          <h3 class="tile-title">@yield('title')</h3>
           <div class="tile-body">
             <div class="row element-button">
               <div class="col-sm-2">
@@ -213,6 +214,10 @@
               </div>
             </div>
 
+            @if (session('msg'))
+            <div class="alert alert-success">{{session('msg')}}</div>
+            @endif
+
             @if ($errors->any())
             <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại.</div>
             @endif
@@ -224,7 +229,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label class="control-label">Tên sản phẩm</label>
-                    <input class="form-control" type="text" name="ten_sp">
+                    <input class="form-control" type="text" name="ten_sp" value="{{old('ten_sp')}}">
                     @error('ten_sp')
                     <span style="color: red;">{{$message}}</span>
                     @enderror
