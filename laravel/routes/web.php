@@ -20,43 +20,13 @@ use App\Http\Controllers\Admin\SanPhamController;
 |
 */
 
-// Route::get('/', function(){
-//     return view('index');
-// })->name('index');
-
+//client routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detail');
 
 Route::get('dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
 })->name('dang-ky-dang-nhap');
-
-//client routes
-// Route::get('/', function(){
-//     return '<h1>TRANG CHỦ UNICODE</h1>';
-// })->name('home');
-
-Route::prefix('categories')->group(function(){
-
-    //danh sách chuyên mục
-    Route::get('/', [CategoriesController::class, 'index'])->name('categories.list');
-
-    //Lấy chi tiết 1 chuyên mục (áp dụng show form sửa chuyên mục)
-    Route::get('edit/{id}', [CategoriesController::class, 'getCategory'])->name('categories.edit');
-
-    //xử lý update chuyên mục
-    Route::post('/edit/{id}', [CategoriesController::class, 'updateCategory']);
-
-    //hiển thị form add dữ liệu
-    Route::get('/add', [CategoriesController::class, 'addCategory'])->name('categories.add');
-
-    //xử lý thêm chuyên mục
-    Route::post('/add', [CategoriesController::class, 'handleAddCategory']);
-
-    //xóa thêm chuyên mục
-    Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
-
-
-});
 
 //Admin Route
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
@@ -72,9 +42,4 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/update', [SanPhamController::class, 'update'])->name('update');
         Route::get('/xoa/{id}', [SanPhamController::class, 'destroy'])->name('delete');
     });
-});
-
-//Users Route
-Route::prefix('users')->group(function(){
-    Route::get('/', [UsersController::class, 'index']);
 });

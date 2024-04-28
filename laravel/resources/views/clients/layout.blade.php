@@ -19,7 +19,7 @@
             <div class="header-mobile row items-center justify-between flex-wrap">
                 <div class="col col-9 col-lg-12">
                 <a id="header-logo" class="navbar-brand header-logo w-full inline-block align-middle" href="/">
-                    <img src="images/logo.png" class="w-full" alt="TailWind css starter" width="150" height="39" />
+                    <img src="../images/logo.png" class="w-full" alt="TailWind css starter" width="150" height="39" />
                 </a>
                 </div>
                 <div class="col col-3 text-right lg:hidden">

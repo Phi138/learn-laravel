@@ -37,7 +37,7 @@
     <div class="row">
       @foreach($sanPhams as $item)
       <div class="col w-1/4">
-        <a class="text-sm" href="">
+        <a class="text-sm" href="{{route('detail', ['id'=>$item->ma_sp])}}">
           <img src="{{$item->ds_hinh_anh}}" alt="">
           <h3 class="text-sm">{{$item->ten_sp}}</h3>
           <div class="flex">
