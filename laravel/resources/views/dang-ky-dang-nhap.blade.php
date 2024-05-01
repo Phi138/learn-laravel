@@ -1,4 +1,7 @@
 <h2>Sign in/up Form</h2>
+    @if (session('msg'))
+        <div class="alert alert-success">{{session('msg')}}</div>
+    @endif
     <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
@@ -16,18 +19,19 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Sign in</h1>
-                <div class="social-container">
+            <form action="{{route('login')}}" method="POST">
+                @csrf
+                <h1>Đăng nhập</h1>
+                {{-- <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                <span>or use your account</span> --}}
+                <input type="text" name="ten_nguoi_dung" placeholder="Tên tài khoản" />
+                <input type="password" name="mat_khau" placeholder="Mật khẩu" />
+                <a href="#">Quên mật khẩu?</a>
+                <button type="submit">Đăng nhập</button>
             </form>
         </div>
         <div class="overlay-container">

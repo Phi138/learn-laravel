@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\SanPhamController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +24,17 @@ use App\Http\Controllers\Admin\SanPhamController;
 //client routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detail');
+Route::get('/gio-hang', [HomeController::class, 'gioHang'])->name('gio-hang');
+Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuyen');
 
-Route::get('dang-ky-dang-nhap', function(){
+Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
-})->name('dang-ky-dang-nhap');
+});
+Route::post('/dang-ky-dang-nhap', [AuthController::class, 'login'])->name('login');
 
 //Admin Route
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
     // Route::resource('products', ProductController::class)->middleware('auth.admin.product');
 
     //san-pham

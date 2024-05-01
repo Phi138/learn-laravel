@@ -3,6 +3,7 @@
 @import 'libs/font-iconmoon.scss';
 @import 'base/variables.scss';
 @import 'base/base.scss';
+@import 'base/_button.scss';
 @import 'base/custom.scss';
 
 @tailwind base;

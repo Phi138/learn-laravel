@@ -122,7 +122,9 @@
                         <a target="_blank" href="" class="main-link">SHOP THE LOOK</a>
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-                        <a href="ADA.html" class="main-link">ELISE STORY</a>
+                        <a href="{{route('gio-hang')}}" class="main-link">
+                            <span class="icomoon icon-cart"></span>
+                        </a>
                         </li>
                     </ul>
                 </nav>

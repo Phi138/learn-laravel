@@ -28,7 +28,7 @@
 
 
       <!-- User Menu-->
-      <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+      <li><a class="app-nav__item" href="{{route('index')}}"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
       </li>
     </ul>
@@ -123,7 +123,6 @@
                         <table class="table table-hover table-bordered" id="sampleTable">
                           <thead>
                               <tr>
-                                  <th width="10"><input type="checkbox" id="all"></th>
                                   <th>Mã sản phẩm</th>
                                   <th>Tên sản phẩm</th>
                                   <th>Mô tả sản phẩm</th>
@@ -143,7 +142,6 @@
                           <tbody>
                             @foreach($sanPhams as $sanPham)
                             <tr>
-                              <td width="10"><input type="checkbox" name="check1" value="1"></td>
                               <td>{{$sanPham->ma_sp}}</td>
                               <td>{{$sanPham->ten_sp}}</td>
                               <td>{{$sanPham->mo_ta_sp}}</td>

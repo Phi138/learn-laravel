@@ -24,23 +24,23 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.icon-angle-double-right:before {
-  content: "\e903";
-}
-.icon-angle-double-left:before {
-  content: "\e904";
+.icon-cart:before {
+  content: "\e906";
 }
 .icon-calendar:before {
   content: "\e900";
 }
-.icon-icon-search:before {
-  content: "\e905";
+.icon-date:before {
+  content: "\e900";
 }
-.icon-mail-envelope-closed2:before {
-  content: "\e902";
+.icon-schedule:before {
+  content: "\e900";
 }
-.icon-mail-envelope-closed:before {
-  content: "\e901";
+.icon-time:before {
+  content: "\e900";
+}
+.icon-day:before {
+  content: "\e900";
 }
 .icon-google-plus:before {
   content: "\ea8b";
@@ -62,6 +62,21 @@
 }
 .icon-linkedin2:before {
   content: "\eaca";
+}
+.icon-angle-double-right:before {
+  content: "\e903";
+}
+.icon-angle-double-left:before {
+  content: "\e904";
+}
+.icon-icon-search:before {
+  content: "\e905";
+}
+.icon-mail-envelope-closed2:before {
+  content: "\e902";
+}
+.icon-mail-envelope-closed:before {
+  content: "\e901";
 }
 .icon-close:before {
   content: "\e91f";

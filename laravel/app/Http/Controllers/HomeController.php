@@ -24,4 +24,14 @@ class HomeController extends Controller
         $title = $sanPhamDetail->ten_sp;
         return view('clients.xem-chi-tiet', compact('title', 'sanPhamDetail'));
     }
+
+    public function gioHang () {
+        $title = 'THÔNG TIN GIỎ HÀNG';
+        return view('clients.gio-hang', compact('title'));
+    }
+
+    public function vanChuyen () {
+        $title = 'ĐỊA CHỈ GIAO HÀNG';
+        return view('clients.van-chuyen', compact('title'));
+    }
 }
