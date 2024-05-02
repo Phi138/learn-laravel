@@ -1,17 +1,14 @@
+<head>
+    @vite('resources/css/app.css')
+</head>
 <h2>Sign in/up Form</h2>
     @if (session('msg'))
         <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <div class="container" id="container">
+    <div class="container h-[700px]" id="container">
         <div class="form-container sign-up-container">
-            <form action="{{route('user-store')}}" method="POST">
+            <form class="text-left" action="{{route('user-store')}}" method="POST">
                 <h1>Đăng ký</h1>
-                {{-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registration</span> --}}
                 <div>
                     <label for="ten_nguoi_dung">Tên người dùng:</label>
                     <input type="text" id="ten_nguoi_dung" name="ten_nguoi_dung" required>
@@ -20,9 +17,21 @@
                     <label for="mat_khau">Mật khẩu:</label>
                     <input type="password" id="mat_khau" name="mat_khau" required>
                 </div>
-                <div>
+                <div class="w-full">
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email" required>
+                </div>
+                <div class="w-full">
+                    <label for="ho_ten">Họ và tên:</label>
+                    <input type="text" id="ho_ten" name="ho_ten" required>
+                </div>
+                <div class="w-full">
+                    <label for="ho_ten">Địa chỉ:</label>
+                    <input type="text" id="dia_chi" name="dia_chi" required>
+                </div>
+                <div class="w-full">
+                    <label for="sdt">Số điện thoại:</label>
+                    <input type="tel" id="sdt" name="sdt" required>
                 </div>
                 <button type="submit">Đăng ký</button>
                 @csrf
@@ -32,12 +41,6 @@
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <h1>Đăng nhập</h1>
-                {{-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span> --}}
                 <input type="text" name="ten_nguoi_dung" placeholder="Tên tài khoản" />
                 <input type="password" name="mat_khau" placeholder="Mật khẩu" />
                 <a href="#">Quên mật khẩu?</a>

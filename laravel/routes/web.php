@@ -30,7 +30,7 @@ Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuye
 
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
-});
+})->name('dang-ky-dang-nhap');
 Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login');
 Route::post('/dang-ky', [NguoiDungController::class, 'store'])->name('user-store');
 

@@ -43,15 +43,15 @@ class NguoiDungController extends Controller
             $request->ten_nguoi_dung,
             Hash::make($request->mat_khau),
             $request->email,
-            '',
-            '',
-            '',
+            $request->ho_ten,
+            $request->dia_chi,
+            $request->sdt,
             0,
         ];
         $this->nguoiDung->addNguoiDung($data);
 
         // Đăng ký thành công, chuyển hướng đến trang đăng nhập hoặc trang khác
-        return redirect()->route('index')->with('msg', 'Đăng ký thành công!');
+        return redirect()->route('dang-ky-dang-nhap')->with('msg', 'Đăng ký thành công!');
     }
 
     /**
