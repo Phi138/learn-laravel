@@ -4,6 +4,7 @@ use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\Admin\NguoiDungController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SanPhamController;
@@ -30,11 +31,12 @@ Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuye
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
 });
-Route::post('/dang-ky-dang-nhap', [AuthController::class, 'login'])->name('login');
+Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login');
+Route::post('/dang-ky', [NguoiDungController::class, 'store'])->name('user-store');
 
 //Admin Route
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
-    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin-index');
     // Route::resource('products', ProductController::class)->middleware('auth.admin.product');
 
     //san-pham
