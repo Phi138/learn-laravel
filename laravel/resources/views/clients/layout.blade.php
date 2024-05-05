@@ -119,7 +119,23 @@
                         </div>
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-                        <a target="_blank" href="" class="main-link">SHOP THE LOOK</a>
+                            <a href="{{route('dang-ky-dang-nhap')}}" class="main-link">
+                                <span class="icomoon icon-user mr-4"></span>
+                                @if(session('ten_nguoi_dung'))
+                                    {{ session('ten_nguoi_dung') }}
+                                @else
+                                    Tài khoản
+                                @endif
+                            </a>
+                            @if(session('ten_nguoi_dung'))
+                            <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-gray-200 p-8 lg:opacity-0 down_lg:hidden">
+                                <ul class="list-inline list-none pl-0">
+                                    <li>
+                                        <a href="{{route('logout')}}">Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            @endif
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
                         <a href="{{route('gio-hang')}}" class="main-link">

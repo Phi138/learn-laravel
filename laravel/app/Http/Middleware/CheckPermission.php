@@ -15,8 +15,16 @@ class CheckPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // $homeUrl = route('home');
-        // return redirect($homeUrl);
+        //echo 'Middleware request';
+
+        if(!$this->isLogin()){
+            return redirect(route('dang-ky-dang-nhap'));
+        }
         return $next($request);
+    }
+
+    public function isLogin(){
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        return session()->has('ten_nguoi_dung');
     }
 }

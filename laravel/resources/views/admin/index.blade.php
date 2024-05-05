@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <!-- or -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -15,10 +14,11 @@
   <link rel="stylesheet" type="text/css"
     href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
   @vite('resources/css/admin/main.css')
-  @vite('resources/js/app.js')
+  {{-- @vite('resources/js/admin.js') --}}
 </head>
 
 <body onload="time()" class="app sidebar-mini rtl">
@@ -31,7 +31,7 @@
 
 
       <!-- User Menu-->
-      <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+      <li><a class="app-nav__item" href="{{route('logout')}}"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
       </li>
     </ul>
@@ -42,7 +42,7 @@
     <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/images/hay.jpg" width="50px"
         alt="User Image">
       <div>
-        <p class="app-sidebar__user-name"><b>Võ Trường</b></p>
+        <p class="app-sidebar__user-name"><b>{{ session('ten_nguoi_dung') }}</b></p>
         <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
       </div>
     </div>
@@ -267,18 +267,18 @@
         </b></p>
     </div>
   </main>
-  <script src="js/jquery-3.2.1.min.js"></script>
+  {{-- <script src="js/jquery-3.2.1.min.js"></script>
   <!--===============================================================================================-->
-  <script src="js/popper.min.js"></script>
+  <script src="js/popper.min.js"></script> --}}
   <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
   <!--===============================================================================================-->
-  <script src="js/bootstrap.min.js"></script>
+  {{-- <script src="js/bootstrap.min.js"></script>
   <!--===============================================================================================-->
   <script src="js/main.js"></script>
   <!--===============================================================================================-->
   <script src="js/plugins/pace.min.js"></script>
   <!--===============================================================================================-->
-  <script type="text/javascript" src="js/plugins/chart.js"></script>
+  <script type="text/javascript" src="js/plugins/chart.js"></script> --}}
   <!--===============================================================================================-->
   <script type="text/javascript">
     var data = {
@@ -306,10 +306,10 @@
       ]
     };
     var ctxl = $("#lineChartDemo").get(0).getContext("2d");
-    var lineChart = new Chart(ctxl).Line(data);
+    // var lineChart = new Chart(ctxl).Line(data);
 
     var ctxb = $("#barChartDemo").get(0).getContext("2d");
-    var barChart = new Chart(ctxb).Bar(data);
+    // var barChart = new Chart(ctxb).Bar(data);
   </script>
   <script type="text/javascript">
     //Thời Gian

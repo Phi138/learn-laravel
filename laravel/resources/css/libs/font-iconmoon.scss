@@ -24,6 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-user:before {
+  content: "\e908";
+}
 .icon-cart:before {
   content: "\e906";
 }

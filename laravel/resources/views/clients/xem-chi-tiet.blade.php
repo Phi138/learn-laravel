@@ -5,6 +5,9 @@
 @section('content')
 <section>
   <div class="container">
+    @if (session('msg'))
+        <div class="alert alert-success text-center mb-15">{{session('msg')}}</div>
+    @endif
     <div class="row">
         <div class="col w-1/2">
             <img src="../{{$sanPhamDetail->ds_hinh_anh}}" alt="">
@@ -32,7 +35,7 @@
             </div>
             <div class="row">
                 <p class="col">
-                    <a href="" class="btn btn-primary">THÊM VÀO GIỎ</a>
+                    <a href="{{route('muc-gio-hang.store', ['maSanPham' => $sanPhamDetail->ma_sp])}}" class="btn btn-primary">THÊM VÀO GIỎ</a>
                 </p>
                 <p class="col">
                     <a href="" class="btn btn-outline-primary">THÊM VÀO YÊU THÍCH</a>

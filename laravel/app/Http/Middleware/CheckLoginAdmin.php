@@ -24,6 +24,7 @@ class CheckLoginAdmin
     }
 
     public function isLogin(){
-        return true;
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        return session()->has('ten_nguoi_dung') && session('laAdmin') == 1;
     }
 }

@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\NguoiDungController;
-use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\MucGioHangController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\HomeController;
@@ -28,11 +26,14 @@ Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detai
 Route::get('/gio-hang', [HomeController::class, 'gioHang'])->name('gio-hang');
 Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuyen');
 
+//login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
 })->name('dang-ky-dang-nhap');
 Route::post('/dang-nhap', [AuthController::class, 'login'])->name('login');
 Route::post('/dang-ky', [NguoiDungController::class, 'store'])->name('user-store');
+//logout
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //Admin Route
 Route::middleware('auth.admin')->prefix('admin')->group(function(){
@@ -48,4 +49,19 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/update', [SanPhamController::class, 'update'])->name('update');
         Route::get('/xoa/{id}', [SanPhamController::class, 'destroy'])->name('delete');
     });
+});
+
+//thêm vào giỏ hàng
+Route::middleware(['checkpermission'])->group(function () {
+    //muc-gio-hang
+    Route::any('/muc-gio-hang/{maSanPham}', [MucGioHangController::class, 'store'])->name('muc-gio-hang.store');
+});
+
+Route::get('/check-session', function () {
+    $tenNguoiDung = session('ten_nguoi_dung');
+    if ($tenNguoiDung) {
+        return "Tên người dùng: " . $tenNguoiDung;
+    } else {
+        return "Không có tên người dùng trong session.";
+    }
 });
