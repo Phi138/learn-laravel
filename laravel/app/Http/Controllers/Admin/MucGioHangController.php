@@ -34,8 +34,8 @@ class MucGioHangController extends Controller
     public function store(Request $request, $maSanPham)
     {
         $data = [
-            1,
-            'XL',
+            $request->input('soLuong'),
+            $request->input('size'),
             $request->session()->get('ten_nguoi_dung'),
             $maSanPham
         ];
@@ -75,5 +75,9 @@ class MucGioHangController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function ttGioHang() {
+        
     }
 }

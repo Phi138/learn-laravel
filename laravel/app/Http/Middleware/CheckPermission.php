@@ -15,8 +15,6 @@ class CheckPermission
      */
     public function handle(Request $request, Closure $next): Response
     {
-        //echo 'Middleware request';
-
         if(!$this->isLogin()){
             return redirect(route('dang-ky-dang-nhap'));
         }

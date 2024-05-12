@@ -58,10 +58,12 @@ Route::middleware(['checkpermission'])->group(function () {
 });
 
 Route::get('/check-session', function () {
-    $tenNguoiDung = session('ten_nguoi_dung');
-    if ($tenNguoiDung) {
-        return "Tên người dùng: " . $tenNguoiDung;
-    } else {
-        return "Không có tên người dùng trong session.";
-    }
+    // $tenNguoiDung = session('ten_nguoi_dung');
+    // if ($tenNguoiDung) {
+    //     return "Tên người dùng: " . $tenNguoiDung;
+    // } else {
+    //     return "Không có tên người dùng trong session.";
+    // }
+    $url =session('previous_url');
+    return $url;
 });

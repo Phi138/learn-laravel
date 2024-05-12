@@ -22,6 +22,8 @@ class HomeController extends Controller
         $sanPhamDetail = $sanPham->getDetail($id);
         $sanPhamDetail = $sanPhamDetail[0];
         $title = $sanPhamDetail->ten_sp;
+        // Lưu URL hiện tại vào session
+        session(['previous_url' => url()->current()]);
         return view('clients.xem-chi-tiet', compact('title', 'sanPhamDetail'));
     }
 
