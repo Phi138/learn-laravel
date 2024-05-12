@@ -3,7 +3,7 @@
 @section('title', $title)
 
 @section('content')
-<section class="mod-swiper">
+<section class="mod-swiper h-fit">
   <div class="container">
     <div class="swiper swiper-1 slider-lazy pb-20">
     <!-- Additional required wrapper -->
@@ -51,3 +51,8 @@
   </div>
 </section>
 @endsection
+
+@if(Session::has('ten_nguoi_dung') && session('flag') == 1)
+  <?php Session::put('flag', 0); ?>
+  <script>alert("Đăng nhập thành công!");</script>
+@endif

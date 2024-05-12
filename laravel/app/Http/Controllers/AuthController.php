@@ -23,8 +23,13 @@ class AuthController extends Controller
             $request->session()->put('laAdmin', $laAdmin);
 
             if($laAdmin == 0) {
-                // Chuyển hướng người dùng đến trang trước đó
-                return redirect(session('previous_url'));
+                if(session('previous_url')) {
+                    // Chuyển hướng người dùng đến trang trước đó
+                    return redirect(session('previous_url'));
+                }
+                else {
+                    return redirect()->route('index')->with('flag', 1);
+                }
             }
             else
                 return redirect()->route('admin-index');
