@@ -74,10 +74,42 @@ class MucGioHangController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        if(!empty($id)){
+            $sanPhamDetail = $this->mucGioHang->getDetail($id);
+            if(!empty($sanPhamDetail[0])){
+                $deleteStatus = $this->mucGioHang->deleteSanPham($id);
+                if ($deleteStatus){
+                    $msg = 'Xóa sản phẩm thành công';
+                } else {
+                    $msg = 'Bạn không thể xóa sản phẩm lúc này. Vui lòng thử lại sau!';
+                }
+            } else {
+                $msg = 'Sản phẩm không tồn tại';
+            }
+        } else {
+            $msg = 'Liên kết không tồn tại';
+        }
+        return redirect()->route('gio-hang')->with('msg', $msg);
     }
 
-    public function ttGioHang() {
+    public function getCartItems()
+    {
+        $title = 'THÔNG TIN GIỎ HÀNG';
+
+        $ten_nguoi_dung = session('ten_nguoi_dung');
         
+        $items = MucGioHang::join('san_pham', 'muc_gio_hang.ma_sp', '=', 'san_pham.ma_sp')
+            ->select('muc_gio_hang.*', 'san_pham.ten_sp', 'san_pham.gia_sp', 'san_pham.ds_hinh_anh', 'san_pham.gia_km')
+            ->where('muc_gio_hang.ten_nguoi_dung', $ten_nguoi_dung)
+            ->get();
+
+        $tongSoLuong = $items->sum('so_luong');
+
+        $tongTien = 0;
+        foreach ($items as $item) {
+            $tongTien += $item['so_luong'] * $item['gia_km'];
+        }
+
+        return view('clients.gio-hang', compact('items', 'title', 'tongSoLuong', 'tongTien'));
     }
 }

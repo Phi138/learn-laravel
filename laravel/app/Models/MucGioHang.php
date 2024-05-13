@@ -15,12 +15,22 @@ class MucGioHang extends Model
                     VALUES (?, ?, ?, ?)', $data);
     }
 
-    public function ttGioHang(){
-        $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
-                                FROM san_pham sp 
-                                JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc 
-                                ORDER BY sp.ngay_tao DESC');
+    public function getCartItems($ten_nguoi_dung)
+    {
+        $items = DB::table('muc_gio_hang')
+            ->join('san_pham', 'muc_gio_hang.ma_sp', '=', 'san_pham.ma_sp')
+            ->select('gio_hang.*', 'san_pham.*')
+            ->where('muc_gio_hang.ten_nguoi_dung', '=', $ten_nguoi_dung)
+            ->get();
 
-        return $sanPhams;
+        return $items;
+    }
+
+    public function getDetail($id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE id = ?', [$id]);
+    }
+
+    public function deleteSanPham($id){
+        return DB::delete('DELETE FROM '.$this->table.' WHERE id=?', [$id]);
     }
 }

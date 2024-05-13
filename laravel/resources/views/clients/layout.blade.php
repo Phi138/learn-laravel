@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <link rel="icon" type="image/x-icon" href="https://elise.vn/media/favicon/stores/2/favico_192x192.png">
         </head>
     <body>
         <header id="header" class="module header fixed z-50 w-full bg-white py-10 lg:py-0" data-module="header">
@@ -43,7 +44,7 @@
                                 class="icomoon icon-chevron-down block"></span></span>
                         </a>
                         <div id="dropdown-menu-1"
-                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full left-0 right-0 lg:bg-gray-200 p-4 lg:opacity-0 down_lg:hidden">
+                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full left-0 right-0 lg:bg-white p-4 lg:opacity-0 down_lg:hidden">
                             <div class="container">
                             <div class="row">
                                 <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
@@ -92,7 +93,7 @@
                                 class="icomoon icon-chevron-down block"></span></span>
                         </a>
                         <div id="dropdown-menu-3"
-                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-gray-200 p-8 lg:opacity-0 down_lg:hidden">
+                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
                             <ul class="list-inline list-none pl-0">
                             <li>
                                 <a href="#">News overview</a>
@@ -128,9 +129,9 @@
                                 @endif
                             </a>
                             @if(session('ten_nguoi_dung'))
-                            <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-gray-200 p-8 lg:opacity-0 down_lg:hidden">
-                                <ul class="list-inline list-none pl-0">
-                                    <li>
+                            <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
+                                <ul class="list-inline list-none pl-0 mb-0">
+                                    <li class="mb-0">
                                         <a href="{{route('logout')}}">Đăng xuất</a>
                                     </li>
                                 </ul>

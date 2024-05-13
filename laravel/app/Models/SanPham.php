@@ -14,7 +14,7 @@ class SanPham extends Model
         $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
                                 FROM san_pham sp 
                                 JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc 
-                                ORDER BY sp.ngay_tao DESC');
+                                ORDER BY sp.ma_sp DESC');
 
         return $sanPhams;
     }

@@ -23,7 +23,7 @@ use App\Http\Controllers\AuthController;
 //client routes
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detail');
-Route::get('/gio-hang', [HomeController::class, 'gioHang'])->name('gio-hang');
+
 Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuyen');
 
 //login
@@ -55,6 +55,8 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
 Route::middleware(['checkpermission'])->group(function () {
     //muc-gio-hang
     Route::any('/muc-gio-hang/{maSanPham}', [MucGioHangController::class, 'store'])->name('muc-gio-hang.store');
+    Route::get('/gio-hang', [MucGioHangController::class, 'getCartItems'])->name('gio-hang');
+    Route::get('muc-gio-hang/xoa/{id}', [MucGioHangController::class, 'destroy'])->name('muc-gio-hang.delete');
 });
 
 Route::get('/check-session', function () {
