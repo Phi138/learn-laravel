@@ -38,12 +38,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">THÊM VÀO GIỎ</button>
             </form>
-            {{-- <p class="col">
-                    <a href="" class="btn btn-outline-primary">THÊM VÀO YÊU THÍCH</a>
-                </p> --}}
-                {{-- <p class="col">
-                    <a href="" class="btn btn-outline-primary">MUA NGAY VỚI</a>
-                </p> --}}
             <p>
                 <a href="" class="btn">HƯỚNG DẪN MUA HÀNG</a>
             </p>

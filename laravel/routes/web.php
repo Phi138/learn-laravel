@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NguoiDungController;
 use App\Http\Controllers\Admin\MucGioHangController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SanPhamController;
+use App\Http\Controllers\Admin\DonHangController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 
@@ -24,7 +25,7 @@ use App\Http\Controllers\AuthController;
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detail');
 
-Route::get('/van-chuyen', [HomeController::class, 'vanChuyen'])->name('van-chuyen');
+Route::get('/van-chuyen', [MucGioHangController::class, 'thanhToan'])->name('van-chuyen');
 
 //login
 Route::get('/dang-ky-dang-nhap', function(){
@@ -57,6 +58,9 @@ Route::middleware(['checkpermission'])->group(function () {
     Route::any('/muc-gio-hang/{maSanPham}', [MucGioHangController::class, 'store'])->name('muc-gio-hang.store');
     Route::get('/gio-hang', [MucGioHangController::class, 'getCartItems'])->name('gio-hang');
     Route::get('muc-gio-hang/xoa/{id}', [MucGioHangController::class, 'destroy'])->name('muc-gio-hang.delete');
+
+    //thanh toán
+    Route::any('/success', [DonHangController::class, 'createClient'])->name('success');
 });
 
 Route::get('/check-session', function () {

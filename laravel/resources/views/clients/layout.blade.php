@@ -131,6 +131,9 @@
                             @if(session('ten_nguoi_dung'))
                             <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
                                 <ul class="list-inline list-none pl-0 mb-0">
+                                    <li class="">
+                                        <a href="#">Đơn hàng</a>
+                                    </li>
                                     <li class="mb-0">
                                         <a href="{{route('logout')}}">Đăng xuất</a>
                                     </li>

@@ -112,4 +112,26 @@ class MucGioHangController extends Controller
 
         return view('clients.gio-hang', compact('items', 'title', 'tongSoLuong', 'tongTien'));
     }
+
+    public function thanhToan()
+    {
+        $title = 'ĐỊA CHỈ GIAO HÀNG';
+
+        $ten_nguoi_dung = session('ten_nguoi_dung');
+        
+        $items = MucGioHang::join('san_pham', 'muc_gio_hang.ma_sp', '=', 'san_pham.ma_sp')
+            ->join('nguoi_dung', 'muc_gio_hang.ten_nguoi_dung', '=', 'nguoi_dung.ten_nguoi_dung')
+            ->select('muc_gio_hang.*', 'san_pham.ten_sp', 'san_pham.gia_sp', 'san_pham.ds_hinh_anh', 'san_pham.gia_km', 'nguoi_dung.ho_ten', 'nguoi_dung.dia_chi', 'nguoi_dung.sdt')
+            ->where('muc_gio_hang.ten_nguoi_dung', $ten_nguoi_dung)
+            ->get();
+
+        $tongSoLuong = $items->sum('so_luong');
+
+        $tongTien = 0;
+        foreach ($items as $item) {
+            $tongTien += $item['so_luong'] * $item['gia_km'];
+        }
+
+        return view('clients.van-chuyen', compact('items', 'title', 'tongSoLuong', 'tongTien'));
+    }
 }
