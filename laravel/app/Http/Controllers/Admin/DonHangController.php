@@ -5,13 +5,19 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\DonHang;
+use App\Models\CTDonHang;
+use App\Models\MucGioHang;
 use Carbon\Carbon;
 
 class DonHangController extends Controller
 {
     private $donHang;
+    private $orderDetail;
+    private $mucGioHang;
     public function __construct(){
         $this->donHang = new DonHang();
+        $this->orderDetail = new CTDonHang();
+        $this->mucGioHang = new MucGioHang();
     }
     /**
      * Display a listing of the resource.
@@ -96,6 +102,26 @@ class DonHangController extends Controller
         $this->donHang->createClient($data);
         
         $maDonHang = $this->donHang->getLatestOrderId();
+
+        //lấy ra các sản phẩm trong mục giỏ hàng
+        $items = MucGioHang::join('san_pham', 'muc_gio_hang.ma_sp', '=', 'san_pham.ma_sp')
+        ->select('muc_gio_hang.*')
+        ->where('muc_gio_hang.ten_nguoi_dung', $tenNguoiDung)
+        ->get();
+
+        //xử lý lưu các mục giỏ hàng vào ct đơn hàng
+        foreach ($items as $item) {
+            $orderDetailData = [
+                $item->ma_sp,
+                $maDonHang,
+                $item->so_luong,
+                $item->kich_thuoc,
+            ];
+            $this->orderDetail->createClient($orderDetailData);
+        }
+
+        //xóa các sản phẩm trong mục giỏ hàng có tên người dùng = với session tên người dùng
+        $this->mucGioHang->deleteAllByUser($tenNguoiDung);
 
         // Redirect hoặc trả về response tùy theo logic của ứng dụng
         return view('clients.success', compact('tenNguoiDung', 'title', 'maDonHang'));

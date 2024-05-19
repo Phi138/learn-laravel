@@ -9,7 +9,23 @@ use DB;
 class SanPham extends Model
 {
     use HasFactory;
-    protected $table = 'san_pham';
+    protected $table = 'san_pham'; 
+
+    //lấy ra các sản phẩm có danh mục là đầm
+    public function getDamSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%đầm%']);
+
+        return $sanPhams;
+    }
+
+    //lấy ra tất cả sản phẩm
     public function getAllSanPhams(){
         $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
                                 FROM san_pham sp 
@@ -30,7 +46,7 @@ class SanPham extends Model
 
     public function updateSanPham($data, $id){
         $data[] = $id;
-        return DB::update('UPDATE '.$this->table.' SET ten_sp=?, mo_ta_sp=?, gia_sp=?, ds_hinh_anh=?, so_luong=?, ngay_cap_nhat=?, nguoi_cap_nhat=?, ds_kich_thuoc=?, gia_km=? where ma_sp = ?', $data);
+        return DB::update('UPDATE '.$this->table.' SET ten_sp=?, mo_ta_sp=?, gia_sp=?, ds_hinh_anh=?, so_luong=?, ngay_cap_nhat=?, nguoi_cap_nhat=?, ds_kich_thuoc=?, gia_km=?, ma_danh_muc=? where ma_sp = ?', $data);
     }
 
     public function deleteSanPham($id){

@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
+use App\Models\DanhMuc;
 
 class SanPhamController extends Controller
 {
     private $sanPham;
+    private $danhMuc;
     public function __construct(){
         $this->sanPham = new SanPham();
+        $this->danhMuc = new DanhMuc();
     }
     /**
      * Display a listing of the resource.
@@ -91,7 +94,8 @@ class SanPhamController extends Controller
         } else {
             return redirect()->route('san-pham.index')->with('msg', 'Liên kết không tồn tại');
         }
-        return view('admin.san-pham.sua', compact('title', 'sanPhamDetail'));
+        $danhMucs = $this->danhMuc->getAllSanPhams();
+        return view('admin.san-pham.sua', compact('title', 'sanPhamDetail', 'danhMucs'));
     }
 
     /**
@@ -100,29 +104,37 @@ class SanPhamController extends Controller
     public function update(Request $request)
     {
         $id = session('id');
+        $sanPhamDetail = $this->sanPham->getDetail($id);
+
+        if($request->has('ds_hinh_anh')){
+            $file = $request->ds_hinh_anh;
+            $fileName = $file->getClientoriginalName();
+            $file->move(public_path('images/item'), $fileName);
+            $request->merge(['image' => $fileName]);
+        } else {
+            $request->merge(['image' => $sanPhamDetail[0]->ds_hinh_anh]);
+        }
+         
         if(empty($id)){
             return back()->with('msg', 'Liên kết không tồn tại');
         }
         $request->validate([
             'ten_sp' => 'required|min:5',
-            // 'email' => 'required|email|unique:sanPham,email,'.$id
         ], [
             'ten_sp.required' => 'Tên sản phẩm bắt buộc phải nhập',
             'ten_sp.min' => 'Tên sản phẩm phải từ :min ký tự trở lên',
-            // 'email.required' => 'Email bắt buộc phải nhập',
-            // 'email.email' => 'Email không đúng định dạng',
-            // 'email.unique' => 'Email đã tồn tại trên hệ thống'
         ]);
         $data = [
             $request->ten_sp,
-            '',
-            123456789,
-            '',
-            60,
+            $request->mo_ta_sp,
+            $request->gia_sp,
+            $request->image,
+            $request->so_luong,
             date('Y-m-d H:i:s'),
-            '',
-            '',
-            123456789
+            'admin',
+            $request->ds_kich_thuoc,
+            $request->gia_km,
+            $request->ma_danh_muc
         ];
         $this->sanPham->updateSanPham($data, $id);
         return back()->with('msg','Cập nhật sản phẩm thành công');
@@ -149,5 +161,14 @@ class SanPhamController extends Controller
             $msg = 'Liên kết không tồn tại';
         }
         return redirect()->route('san-pham.index')->with('msg', $msg);
+    }
+
+    //hiển thị sản phẩm đầm ra view
+    public function getDamSanPhams()
+    {
+        $title = 'Đầm';
+
+        $sanPhams = $this->sanPham->getDamSanPhams();
+        return view('clients.dam', compact('title', 'sanPhams'));
     }
 }

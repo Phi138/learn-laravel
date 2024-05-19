@@ -33,4 +33,12 @@ class MucGioHang extends Model
     public function deleteSanPham($id){
         return DB::delete('DELETE FROM '.$this->table.' WHERE id=?', [$id]);
     }
+
+    //xóa tất cả sản phẩm có $tennguoidung
+    public function deleteAllByUser($ten_nguoi_dung)
+    {
+        return DB::table('muc_gio_hang')
+            ->where('ten_nguoi_dung', $ten_nguoi_dung)
+            ->delete();
+    }
 }

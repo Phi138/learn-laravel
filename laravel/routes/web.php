@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\MucGioHangController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\SanPhamController;
 use App\Http\Controllers\Admin\DonHangController;
+use App\Http\Controllers\Admin\CTDhController;
+use App\Http\Controllers\Admin\DanhMucController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 
@@ -26,6 +28,9 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/xem-chi-tiet/{id}', [HomeController::class, 'detail'])->name('detail');
 
 Route::get('/van-chuyen', [MucGioHangController::class, 'thanhToan'])->name('van-chuyen');
+
+//client hiển thị sản phẩm đầm
+Route::get('/dam', [SanPhamController::class, 'getDamSanPhams'])->name('dam');
 
 //login
 Route::get('/dang-ky-dang-nhap', function(){
@@ -50,6 +55,16 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/update', [SanPhamController::class, 'update'])->name('update');
         Route::get('/xoa/{id}', [SanPhamController::class, 'destroy'])->name('delete');
     });
+
+    // danh mục
+    Route::prefix('danh-muc')->name('danh-muc.')->group(function(){
+        Route::get('/', [DanhMucController::class, 'index'])->name('index');
+        Route::get('/them', [DanhMucController::class, 'create'])->name('create');
+        Route::post('/them', [DanhMucController::class, 'store'])->name('store');
+        Route::get('/sua/{id}', [DanhMucController::class, 'edit'])->name('edit');
+        Route::post('/update', [DanhMucController::class, 'update'])->name('update');
+        Route::get('/xoa/{id}', [DanhMucController::class, 'destroy'])->name('delete');
+    });
 });
 
 //thêm vào giỏ hàng
@@ -61,6 +76,9 @@ Route::middleware(['checkpermission'])->group(function () {
 
     //thanh toán
     Route::any('/success', [DonHangController::class, 'createClient'])->name('success');
+
+    //hiển thị trang xem đơn hàng
+    Route::any('/order-id', [CTDhController::class, 'showOrderDetails'])->name('order-id');
 });
 
 Route::get('/check-session', function () {

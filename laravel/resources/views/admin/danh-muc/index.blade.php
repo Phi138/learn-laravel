@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Danh sách sản phẩm | Quản trị Admin</title>
+    <title>Danh sách danh mục | Quản trị Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,20 +47,20 @@
     <ul class="app-menu">
       <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-cart-alt'></i>
           <span class="app-menu__label">POS Bán Hàng</span></a></li>
-      <li><a class="app-menu__item" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
+      <li><a class="app-menu__item " href="index.html"><i class='app-menu__icon bx bx-tachometer'></i><span
             class="app-menu__label">Bảng điều khiển</span></a></li>
-      <li><a class="app-menu__item " href="table-data-table.html"><i class='app-menu__icon bx bx-id-card'></i> <span
-            class="app-menu__label">Quản lý nhân viên</span></a></li>
-      <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-user-voice'></i><span
+      <li><a class="app-menu__item " href="table-data-table.html"><i class='app-menu__icon bx bx-id-card'></i>
+          <span class="app-menu__label">Quản lý nhân viên</span></a></li>
+      <li><a class="app-menu__item " href="#"><i class='app-menu__icon bx bx-user-voice'></i><span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item active" href="{{route('san-pham.index')}}"><i
+      <li><a class="app-menu__item" href="{{route('san-pham.index')}}"><i
             class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
       </li>
       <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
-      <li>
-        <a class="app-menu__item" href="{{route('danh-muc.index')}}"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Quản lý danh mục</span></a>
-      </li>
+      <li><a class="app-menu__item active" href="{{route('danh-muc.index')}}"><i class='app-menu__icon bx bx-run'></i><span
+            class="app-menu__label">Quản lý danh mục
+          </span></a></li>
       <li><a class="app-menu__item" href="table-data-money.html"><i class='app-menu__icon bx bx-dollar'></i><span
             class="app-menu__label">Bảng kê lương</span></a></li>
       <li><a class="app-menu__item" href="quan-ly-bao-cao.html"><i
@@ -75,7 +75,7 @@
     <main class="app-content mt-15">
         <div class="app-title">
             <ul class="app-breadcrumb breadcrumb side">
-                <li class="breadcrumb-item active"><a href="#"><b>Danh sách sản phẩm</b></a></li>
+                <li class="breadcrumb-item active"><a href="#"><b>Danh sách danh mục</b></a></li>
             </ul>
             <div id="clock"></div>
         </div>
@@ -90,75 +90,26 @@
                     <div class="tile-body overflow-x-auto">
                         <div class="row element-button">
                             <div class="col-sm-2">
-                              <a class="btn btn-add btn-sm" href="{{route('san-pham.create')}}" title="Thêm"><i class="fas fa-plus"></i>
-                                Tạo mới sản phẩm</a>
+                              <a class="btn btn-add btn-sm" href="{{route('danh-muc.create')}}" title="Thêm"><i class="fas fa-plus"></i>
+                                Tạo mới danh mục</a>
                             </div>
-                            {{-- <div class="col-sm-2">
-                              <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i
-                                  class="fas fa-file-upload"></i> Tải từ file</a>
-                            </div>
-              
-                            <div class="col-sm-2">
-                              <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
-                                  class="fas fa-print"></i> In dữ liệu</a>
-                            </div>
-                            <div class="col-sm-2">
-                              <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i
-                                  class="fas fa-copy"></i> Sao chép</a>
-                            </div>
-              
-                            <div class="col-sm-2">
-                              <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
-                            </div>
-                            <div class="col-sm-2">
-                              <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
-                                  class="fas fa-file-pdf"></i> Xuất PDF</a>
-                            </div>
-                            <div class="col-sm-2">
-                              <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
-                                  class="fas fa-trash-alt"></i> Xóa tất cả </a>
-                            </div> --}}
                           </div>
                         <table class="table table-hover table-bordered" id="sampleTable">
                           <thead>
                               <tr>
-                                  {{-- <th>Mã sản phẩm</th> --}}
-                                  <th>Tên sản phẩm</th>
-                                  <th>Mô tả sản phẩm</th>
-                                  <th>Giá sản phẩm</th>
-                                  <th>Giá khuyến mãi</th>
-                                  <th>Ảnh</th>
-                                  <th>Số lượng</th>
-                                  <th>Ngày tạo</th>
-                                  <th>Người tạo</th>
-                                  <th>Ngày cập nhật</th>
-                                  <th>Người cập nhật</th>
-                                  <th>Danh sách kích thước</th>
-                                  <th>Danh mục</th>
+                                  <th>Mã danh mục</th>
+                                  <th>Tên danh mục</th>
                                   <th>Chức năng</th>
                               </tr>
                           </thead>
                           <tbody>
                             @foreach($sanPhams as $sanPham)
                             <tr>
-                              {{-- <td>{{$sanPham->ma_sp}}</td> --}}
-                              <td>{{$sanPham->ten_sp}}</td>
-                              <td>{{$sanPham->mo_ta_sp}}</td>
-                              <td>{{number_format($sanPham->gia_sp, 0, ',', '.')}}</td>
-                              <td>{{number_format($sanPham->gia_km, 0, ',', '.')}}</td>
-                              <td><img src="/images/item/{{$sanPham->ds_hinh_anh}}" alt="" width="100px;"></td>
-                              <td>{{$sanPham->so_luong}}</td>
-                              <td>{{$sanPham->ngay_tao}}</td>
-                              <td>{{$sanPham->nguoi_tao}}</td>
-                              <td>{{$sanPham->ngay_cap_nhat}}</td>
-                              <td>{{$sanPham->nguoi_cap_nhat}}</td>
-                              <td>{{$sanPham->ds_kich_thuoc}}</td>
+                              <td>{{$sanPham->ma_danh_muc}}</td>
                               <td>{{$sanPham->ten_danh_muc}}</td>
                               <td>
-                                {{-- <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i></button> --}}
-                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('san-pham.delete', ['id'=>$sanPham->ma_sp])}}"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i></button></a>
-                                <a href="{{route('san-pham.edit', ['id'=>$sanPham->ma_sp])}}"><button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fas fa-edit"></i></button></a>
+                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa?')" href="{{route('danh-muc.delete', ['id'=>$sanPham->ma_danh_muc])}}"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i class="fas fa-trash-alt"></i></button></a>
+                                <a href="{{route('danh-muc.edit', ['id'=>$sanPham->ma_danh_muc])}}"><button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i class="fas fa-edit"></i></button></a>
                               </td>
                             </tr>
                             @endforeach

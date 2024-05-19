@@ -43,43 +43,21 @@
                             <span class="icon-arrow-menu absolute top-3 right-0 block"><span
                                 class="icomoon icon-chevron-down block"></span></span>
                         </a>
-                        <div id="dropdown-menu-1"
-                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full left-0 right-0 lg:bg-white p-4 lg:opacity-0 down_lg:hidden">
-                            <div class="container">
-                            <div class="row">
-                                <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
-                                <li class="mb-0">
-                                    <a href="universal.html">Universal overview</a>
+                        <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
+                            <ul class="list-inline list-none pl-0 mb-0">
+                                <li class="">
+                                    <a href="">Áo</a>
                                 </li>
-                                </ul>
-                                <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
-                                <li class="mb-0">
-                                    <a href="#">network deployment</a>
+                                <li class="">
+                                    <a href="">Quần</a>
                                 </li>
-                                </ul>
-                                <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
-                                <li class="active mb-0">
-                                    <a href="#">Vista by ViewPoint</a>
+                                <li class="">
+                                    <a href="">Chân váy</a>
                                 </li>
                                 <li class="mb-0">
-                                    <a href="#">CMiC</a>
+                                    <a href="{{route('dam')}}">Đầm</a>
                                 </li>
-                                <li class="mb-0">
-                                    <a href="#">COINS</a>
-                                </li>
-                                </ul>
-                                <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
-                                <li class="mb-0">
-                                    <a href="#">broadband consulting</a>
-                                </li>
-                                </ul>
-                                <ul class="col list-inline lg:w-1/5 w-full list-none pl-0">
-                                <li class="mb-0">
-                                    <a href="#">broadband consulting</a>
-                                </li>
-                                </ul>
-                            </div>
-                            </div>
+                            </ul>
                         </div>
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
@@ -132,7 +110,7 @@
                             <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
                                 <ul class="list-inline list-none pl-0 mb-0">
                                     <li class="">
-                                        <a href="#">Đơn hàng</a>
+                                        <a href="{{route('order-id')}}">Đơn hàng</a>
                                     </li>
                                     <li class="mb-0">
                                         <a href="{{route('logout')}}">Đăng xuất</a>

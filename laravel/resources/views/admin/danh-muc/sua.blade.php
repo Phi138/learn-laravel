@@ -168,13 +168,13 @@
           <span class="app-menu__label">Quản lý nhân viên</span></a></li>
       <li><a class="app-menu__item " href="#"><i class='app-menu__icon bx bx-user-voice'></i><span
             class="app-menu__label">Quản lý khách hàng</span></a></li>
-      <li><a class="app-menu__item active" href="{{route('san-pham.index')}}"><i
+      <li><a class="app-menu__item" href="{{route('san-pham.index')}}"><i
             class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
       </li>
       <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
             class="app-menu__label">Quản lý đơn hàng</span></a></li>
-      <li><a class="app-menu__item" href="table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
-            class="app-menu__label">Quản lý nội bộ
+      <li><a class="app-menu__item active" href="{{route('danh-muc.index')}}"><i class='app-menu__icon bx bx-run'></i><span
+            class="app-menu__label">Quản lý danh mục
           </span></a></li>
       <li><a class="app-menu__item" href="table-data-money.html"><i class='app-menu__icon bx bx-dollar'></i><span
             class="app-menu__label">Bảng kê lương</span></a></li>
@@ -200,61 +200,20 @@
           <h3 class="tile-title">@yield('title')</h3>
           <div class="tile-body">
             @if (session('msg'))
-              <div class="alert alert-success">{{session('msg')}}</div>
+            <div class="alert alert-success">{{session('msg')}}</div>
             @endif
 
             @if ($errors->any())
             <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại.</div>
             @endif
 
-            <form class="row" action="{{route('san-pham.update')}}" method="POST" enctype="multipart/form-data">
-                <div class="form-group col-md-3">
-                    <label class="control-label">Tên sản phẩm</label>
-                    <input class="form-control" type="text" name="ten_sp" value="{{old('ten_sp')  ?? $sanPhamDetail->ten_sp}}" required>
-                    @error('ten_sp')
-                      <span style="color: red;">{{$message}}</span>
-                    @enderror
-                </div>
-                <div class="form-group  col-md-3">
-                    <label class="control-label">Số lượng</label>
-                    <input class="form-control" type="number" name="so_luong" value="{{old('so_luong')  ?? $sanPhamDetail->so_luong}}" required>
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="ma_danh_muc" class="control-label">Danh mục</label>
-                    <select class="form-control" name="ma_danh_muc" id="ma_danh_muc">
-                      @foreach ($danhMucs as $danhMuc)
-                        <option value="{{ $danhMuc->ma_danh_muc }}" {{ $sanPhamDetail->ma_danh_muc == $danhMuc->ma_danh_muc ? 'selected' : '' }}>
-                            {{ $danhMuc->ten_danh_muc }}
-                        </option>
-                      @endforeach
-                    </select>
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Giá</label>
-                    <input class="form-control" type="number" name="gia_sp" value="{{old('gia_sp')  ?? $sanPhamDetail->gia_sp}}" required>
-                </div>
-                <div class="form-group col-md-3">
-                    <label class="control-label">Giá khuyến mãi</label>
-                    <input class="form-control" type="number" name="gia_km" value="{{old('gia_km')  ?? $sanPhamDetail->gia_km}}" required>
-                </div>
-                <div class="form-group col-md-3">
-                  <label class="control-label">Danh sách size</label>
-                  <input class="form-control" type="text" name="ds_kich_thuoc" value="{{old('ds_kich_thuoc')  ?? $sanPhamDetail->ds_kich_thuoc}}" required>
-                </div>
+            <form class="row" action="{{route('danh-muc.update')}}" method="POST">
                 <div class="form-group col-md-12">
-                  <label class="control-label">Ảnh sản phẩm</label>
-                  <input type="file" class="form-control-file" name="ds_hinh_anh" id="ds_hinh_anh" onchange="previewImage()">
-                  <div id="old-image-preview">
-                    <img src="/images/item/{{ $sanPhamDetail->ds_hinh_anh }}" alt="Ảnh sản phẩm cũ" style="max-width: 150px; margin-top: 10px;">
-                  </div>
-                  <div id="new-image-preview" style="margin-top: 10px;"></div>
-                </div>
-                <div class="form-group col-md-12">
-                    <label class="control-label">Mô tả sản phẩm</label>
-                    <textarea class="form-control" name="mo_ta_sp" id="mo_ta_sp" required>{{old('mo_ta_sp')  ?? $sanPhamDetail->mo_ta_sp}}</textarea>
+                    <label class="control-label">Tên danh mục</label>
+                    <input class="form-control" type="text" name="ten_danh_muc" value="{{old('ten_danh_muc')  ?? $sanPhamDetail->ten_danh_muc}}" required>
                 </div>
                 <button class="btn btn-save" type="submit">Cập nhật</button>
-                <a class="btn btn-cancel" href="{{route('san-pham.index')}}">Hủy bỏ</a>
+                <a class="btn btn-cancel" href="{{route('danh-muc.index')}}">Hủy bỏ</a>
                 @csrf
             </form>
           </div>
@@ -390,32 +349,26 @@ MODAL
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
   <script src="js/plugins/pace.min.js"></script>
-
-  {{-- xử lý upload ảnh --}}
   <script>
-    function previewImage() {
-    const file = document.getElementById('ds_hinh_anh').files[0];
-    const newImagePreview = document.getElementById('new-image-preview');
-    const oldImagePreview = document.getElementById('old-image-preview');
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        // Lưu lại URL của ảnh cũ
-        oldImageUrl = oldImagePreview.querySelector('img')?.src;
-
-        // Hiển thị preview của ảnh mới
-        newImagePreview.innerHTML = '<img src="' + e.target.result + '" alt="Ảnh sản phẩm mới" style="max-width: 150px;">';
-
-        // Ẩn ảnh cũ
-        oldImagePreview.style.display = 'none';
+    const inpFile = document.getElementById("inpFile");
+    const loadFile = document.getElementById("loadFile");
+    const previewContainer = document.getElementById("imagePreview");
+    const previewContainer = document.getElementById("imagePreview");
+    const previewImage = previewContainer.querySelector(".image-preview__image");
+    const previewDefaultText = previewContainer.querySelector(".image-preview__default-text");
+    inpFile.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        previewDefaultText.style.display = "none";
+        previewImage.style.display = "block";
+        reader.addEventListener("load", function () {
+          previewImage.setAttribute("src", this.result);
+        });
+        reader.readAsDataURL(file);
       }
-      reader.readAsDataURL(file);
-      } else {
-        newImagePreview.innerHTML = '';
-        oldImagePreview.style.display = 'block'; // Hiển thị lại ảnh cũ
-      }
-    }
+    });
+
   </script>
 </body>
 
