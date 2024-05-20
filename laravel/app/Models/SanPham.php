@@ -11,20 +11,6 @@ class SanPham extends Model
     use HasFactory;
     protected $table = 'san_pham'; 
 
-    //lấy ra các sản phẩm có danh mục là đầm
-    public function getDamSanPhams()
-    {
-        $sanPhams = DB::select('
-            SELECT sp.*, dm.ten_danh_muc
-            FROM san_pham sp
-            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
-            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
-            ORDER BY sp.ma_sp DESC
-        ', ['ten_danh_muc' => '%đầm%']);
-
-        return $sanPhams;
-    }
-
     //lấy ra tất cả sản phẩm
     public function getAllSanPhams(){
         $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
@@ -51,5 +37,33 @@ class SanPham extends Model
 
     public function deleteSanPham($id){
         return DB::delete('DELETE FROM '.$this->table.' WHERE ma_sp=?', [$id]);
+    }
+
+    //lấy ra các sản phẩm có danh mục là đầm
+    public function getDamSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%đầm%']);
+
+        return $sanPhams;
+    }
+
+    //lấy ra các sản phẩm có danh mục là ao
+    public function getAoSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%áo%']);
+
+        return $sanPhams;
     }
 }

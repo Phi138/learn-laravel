@@ -171,4 +171,13 @@ class SanPhamController extends Controller
         $sanPhams = $this->sanPham->getDamSanPhams();
         return view('clients.dam', compact('title', 'sanPhams'));
     }
+
+    //hiển thị sản phẩm áo ra view
+    public function getAoSanPhams()
+    {
+        $title = 'Áo';
+
+        $sanPhams = $this->sanPham->getAoSanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
 }

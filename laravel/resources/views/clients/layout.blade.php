@@ -46,7 +46,7 @@
                         <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
                             <ul class="list-inline list-none pl-0 mb-0">
                                 <li class="">
-                                    <a href="">Áo</a>
+                                    <a href="{{route('ao')}}">Áo</a>
                                 </li>
                                 <li class="">
                                     <a href="">Quần</a>

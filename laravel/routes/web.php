@@ -32,6 +32,9 @@ Route::get('/van-chuyen', [MucGioHangController::class, 'thanhToan'])->name('van
 //client hiển thị sản phẩm đầm
 Route::get('/dam', [SanPhamController::class, 'getDamSanPhams'])->name('dam');
 
+//client hiển thị sản phẩm áo
+Route::get('/ao', [SanPhamController::class, 'getAoSanPhams'])->name('ao');
+
 //login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
