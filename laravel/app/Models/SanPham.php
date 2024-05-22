@@ -66,4 +66,32 @@ class SanPham extends Model
 
         return $sanPhams;
     }
+
+    //lấy ra các sản phẩm có danh mục là ao
+    public function getQuanSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%quần%']);
+
+        return $sanPhams;
+    }
+
+    //lấy ra các sản phẩm có danh mục là chân váy
+    public function getChanVaySanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%chân váy%']);
+
+        return $sanPhams;
+    }
 }

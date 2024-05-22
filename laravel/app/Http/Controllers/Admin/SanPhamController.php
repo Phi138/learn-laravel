@@ -169,7 +169,7 @@ class SanPhamController extends Controller
         $title = 'Đầm';
 
         $sanPhams = $this->sanPham->getDamSanPhams();
-        return view('clients.dam', compact('title', 'sanPhams'));
+        return view('clients.ao', compact('title', 'sanPhams'));
     }
 
     //hiển thị sản phẩm áo ra view
@@ -178,6 +178,24 @@ class SanPhamController extends Controller
         $title = 'Áo';
 
         $sanPhams = $this->sanPham->getAoSanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
+
+    //hiển thị sản phẩm quần ra view
+    public function getQuanSanPhams()
+    {
+        $title = 'Quần';
+
+        $sanPhams = $this->sanPham->getQuanSanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
+
+    //hiển thị sản phẩm chân váy ra view
+    public function getChanVaySanPhams()
+    {
+        $title = 'Chân váy';
+
+        $sanPhams = $this->sanPham->getChanVaySanPhams();
         return view('clients.ao', compact('title', 'sanPhams'));
     }
 }

@@ -35,6 +35,12 @@ Route::get('/dam', [SanPhamController::class, 'getDamSanPhams'])->name('dam');
 //client hiển thị sản phẩm áo
 Route::get('/ao', [SanPhamController::class, 'getAoSanPhams'])->name('ao');
 
+//client hiển thị sản phẩm quần
+Route::get('/quan', [SanPhamController::class, 'getQuanSanPhams'])->name('quan');
+
+//client hiển thị sản phẩm chân váy
+Route::get('/chan-vay', [SanPhamController::class, 'getChanVaySanPhams'])->name('chan-vay');
+
 //login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');

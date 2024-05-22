@@ -49,10 +49,10 @@
                                     <a href="{{route('ao')}}">Áo</a>
                                 </li>
                                 <li class="">
-                                    <a href="">Quần</a>
+                                    <a href="{{route('quan')}}">Quần</a>
                                 </li>
                                 <li class="">
-                                    <a href="">Chân váy</a>
+                                    <a href="{{route('chan-vay')}}">Chân váy</a>
                                 </li>
                                 <li class="mb-0">
                                     <a href="{{route('dam')}}">Đầm</a>
