@@ -94,4 +94,18 @@ class SanPham extends Model
 
         return $sanPhams;
     }
+
+    // tìm kiếm
+    public function search($key)
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE sp.ten_sp LIKE :key
+            ORDER BY sp.ma_sp DESC
+        ', ['key' => '%' . $key . '%']);
+
+        return $sanPhams;
+    }
 }

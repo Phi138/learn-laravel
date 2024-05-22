@@ -60,9 +60,6 @@
                             </ul>
                         </div>
                         </li>
-                        <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-                        <a href="page.html" class="main-link">BỘ SƯU TẬP</a>
-                        </li>
                         <li class="menu-item has-sub mx-5 relative lg:static xl:px-10 mb-7 lg:my-15">
                         <a href="javascript:;" role="button" aria-expanded="false" aria-controls="dropdown-menu-3"
                             class="block relative lg:pr-8">

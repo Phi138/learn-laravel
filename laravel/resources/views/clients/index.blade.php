@@ -3,6 +3,18 @@
 @section('title', $title)
 
 @section('content')
+
+<section class="mod-search py-15">
+  <form class="flex justify-center items-center gap-5" role="form">
+    <div class="form-group border-b-1 border-black">
+      <input class="form-control py-4 px-8" type="text" name="key" placeholder="Tìm kiếm..." value="{{$key}}">
+    </div>
+    <button type="submit" class="">
+      <span class="icomoon icon-icon-search"></span>
+    </button>
+  </form>
+</section>
+
 <section class="mod-swiper h-fit">
   <div class="container">
     <div class="swiper swiper-1 slider-lazy pb-20">
@@ -30,7 +42,9 @@
     </div>
   </div>
 </section>
+
 <div class="h-30"></div>
+
 <section>
   <div class="container">
     <h2 class="text-center">NEW ARRIVAL</h2>

@@ -13,8 +13,12 @@ class HomeController extends Controller
         $sanPham = new SanPham();
 
         $sanPhams = $sanPham->getAllSanPhams();
+
+        if($key = request()->key) {
+            $sanPhams = $sanPham->search($key);
+        }
         
-        return view('clients.index', compact('title', 'sanPhams'));
+        return view('clients.index', compact('title', 'sanPhams', 'key'));
     }
 
     public function detail ($id) {
