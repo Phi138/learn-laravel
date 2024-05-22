@@ -32,7 +32,10 @@ class SanPhamController extends Controller
     public function create()
     {
         $title = 'Thêm sản phẩm';
-        return view('admin.san-pham.them', compact('title'));
+
+        $danhMucs = $this->danhMuc->getAllSanPhams();
+
+        return view('admin.san-pham.them', compact('title', 'danhMucs'));
     }
 
     /**
@@ -40,6 +43,13 @@ class SanPhamController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->has('ds_hinh_anh')){
+            $file = $request->ds_hinh_anh;
+            $fileName = $file->getClientoriginalName();
+            $file->move(public_path('images/item'), $fileName);
+            $request->merge(['image' => $fileName]);
+        }
+
         $request->validate([
             'ten_sp' => 'required|min:5',
             // 'email' => 'required|email|unique:sanPham'
@@ -51,18 +61,18 @@ class SanPhamController extends Controller
             // 'email.unique' => 'Email đã tồn tại trên hệ thống'
         ]);
         $data = [
-            '1',
+            $request->ma_danh_muc,
             $request->ten_sp,
-            '',
-            123456789,
-            '',
-            60,
+            $request->mo_ta_sp,
+            $request->gia_sp,
+            $request->image,
+            $request->so_luong,
             date('Y-m-d H:i:s'),
-            '',
+            'admin',
             date('Y-m-d H:i:s'),
-            '',
-            '',
-            123456789
+            'admin',
+            $request->ds_kich_thuoc,
+            $request->gia_km
         ];
         $this->sanPham->addSanPham($data);
 
