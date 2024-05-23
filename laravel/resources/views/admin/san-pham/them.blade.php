@@ -191,7 +191,7 @@
               </div>
               <div class="form-group  col-md-3">
                   <label class="control-label">Số lượng</label>
-                  <input class="form-control" type="number" name="so_luong" value="{{old('so_luong')}}" placeholder="Vui lòng nhập số..." required>
+                  <input class="form-control" type="number" name="so_luong" value="{{old('so_luong')}}" placeholder="Vui lòng nhập số..." min="1" required>
               </div>
               <div class="form-group col-md-3">
                   <label for="ma_danh_muc" class="control-label">Danh mục</label>
@@ -205,11 +205,11 @@
               </div>
               <div class="form-group col-md-3">
                   <label class="control-label">Giá</label>
-                  <input class="form-control" type="number" name="gia_sp" value="{{old('gia_sp')}}" placeholder="Vui lòng nhập số..." required>
+                  <input class="form-control" type="number" name="gia_sp" value="{{old('gia_sp')}}" placeholder="Vui lòng nhập số..." min="0" required>
               </div>
               <div class="form-group col-md-3">
                   <label class="control-label">Giá khuyến mãi</label>
-                  <input class="form-control" type="number" name="gia_km" value="{{old('gia_km')}}" placeholder="Vui lòng nhập số..." required>
+                  <input class="form-control" type="number" name="gia_km" value="{{old('gia_km')}}" placeholder="Vui lòng nhập số..." min="0" required>
               </div>
               <div class="form-group col-md-3">
                 <label class="control-label">Danh sách size</label>
