@@ -82,6 +82,9 @@
                         </div>
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
+                            <a href="{{route('gioi-thieu')}}" class="main-link">Giới thiệu</a>
+                        </li>
+                        <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
                             <a href="{{route('dang-ky-dang-nhap')}}" class="main-link">
                                 <span class="icomoon icon-user mr-4"></span>
                                 @if(session('ten_nguoi_dung'))
@@ -104,9 +107,9 @@
                             @endif
                         </li>
                         <li class="menu-item mx-5 xl:px-10 mb-7 lg:my-15">
-                        <a href="{{route('gio-hang')}}" class="main-link">
-                            <span class="icomoon icon-cart"></span>
-                        </a>
+                            <a href="{{route('gio-hang')}}" class="main-link">
+                                <span class="icomoon icon-cart"></span>
+                            </a>
                         </li>
                     </ul>
                 </nav>

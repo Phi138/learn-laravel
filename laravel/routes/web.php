@@ -50,6 +50,9 @@ Route::get('/tui', [SanPhamController::class, 'getTuiSanPhams'])->name('tui');
 //client hiển thị sản phẩm giày
 Route::get('/giay', [SanPhamController::class, 'getGiaySanPhams'])->name('giay');
 
+//client hiển thị trang giới thiệu
+Route::get('/gioi-thieu', [HomeController::class, 'gioiThieu'])->name('gioi-thieu');
+
 //login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');

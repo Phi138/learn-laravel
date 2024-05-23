@@ -40,4 +40,10 @@ class HomeController extends Controller
         $title = 'ĐỊA CHỈ GIAO HÀNG';
         return view('clients.van-chuyen', compact('title'));
     }
+
+    //giới thiêu
+    public function gioiThieu () {
+        $title = 'ABOUT US';
+        return view('clients.gioi-thieu', compact('title'));
+    }
 }
