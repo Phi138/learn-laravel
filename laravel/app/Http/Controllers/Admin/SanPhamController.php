@@ -208,4 +208,31 @@ class SanPhamController extends Controller
         $sanPhams = $this->sanPham->getChanVaySanPhams();
         return view('clients.ao', compact('title', 'sanPhams'));
     }
+
+    //hiển thị sản phẩm trang sức ra view
+    public function getTrangSucSanPhams()
+    {
+        $title = 'Trang sức';
+
+        $sanPhams = $this->sanPham->getTrangSucSanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
+
+    //hiển thị sản phẩm túi ra view
+    public function getTuiSanPhams()
+    {
+        $title = 'Túi';
+
+        $sanPhams = $this->sanPham->getTuiSanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
+
+    //hiển thị sản phẩm giày ra view
+    public function getGiaySanPhams()
+    {
+        $title = 'Giày';
+
+        $sanPhams = $this->sanPham->getGiaySanPhams();
+        return view('clients.ao', compact('title', 'sanPhams'));
+    }
 }

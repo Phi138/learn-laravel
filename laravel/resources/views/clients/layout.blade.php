@@ -67,30 +67,17 @@
                             <span class="icon-arrow-menu absolute top-3 right-0 block"><span
                                 class="icomoon icon-chevron-down block"></span></span>
                         </a>
-                        <div id="dropdown-menu-3"
-                            class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
+                        <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 pb-0 lg:opacity-0 down_lg:hidden">
                             <ul class="list-inline list-none pl-0">
-                            <li>
-                                <a href="#">News overview</a>
-                            </li>
-                            <li>
-                                <a href="#">Workshops</a>
-                            </li>
-                            <li>
-                                <a href="#">selection</a>
-                            </li>
-                            <li>
-                                <a href="#">About</a>
-                            </li>
-                            <li>
-                                <a href="#">implementation</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">Program Mangement</a>
-                            </li>
-                            <li>
-                                <a href="#">Training</a>
-                            </li>
+                                <li>
+                                    <a href="{{route('trang-suc')}}">Trang sức</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('tui')}}">Túi</a>
+                                </li>
+                                <li class="mb-0">
+                                    <a href="{{route('giay')}}">Giày</a>
+                                </li>
                             </ul>
                         </div>
                         </li>

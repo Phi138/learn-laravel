@@ -222,7 +222,7 @@
               </div>
               <div class="form-group col-md-12">
                   <label class="control-label">Mô tả sản phẩm</label>
-                  <textarea class="form-control" name="mo_ta_sp" id="mo_ta_sp" required>{{old('mo_ta_sp')}}</textarea>
+                  <textarea class="form-control" name="mo_ta_sp" id="mo_ta_sp">{{old('mo_ta_sp')}}</textarea>
               </div>
               <button class="btn btn-save" type="submit">Lưu lại</button>
               <a class="btn btn-cancel" href="{{route('san-pham.index')}}">Hủy bỏ</a>

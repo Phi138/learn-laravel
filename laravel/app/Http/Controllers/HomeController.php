@@ -12,7 +12,7 @@ class HomeController extends Controller
 
         $sanPham = new SanPham();
 
-        $sanPhams = $sanPham->getAllSanPhams();
+        $sanPhams = $sanPham->getAllSanPhams1();
 
         if($key = request()->key) {
             $sanPhams = $sanPham->search($key);

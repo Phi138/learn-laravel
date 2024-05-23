@@ -11,13 +11,21 @@ class SanPham extends Model
     use HasFactory;
     protected $table = 'san_pham'; 
 
-    //lấy ra tất cả sản phẩm
-    public function getAllSanPhams(){
+    //lấy ra tất cả sản phẩm trừ túi giày trang sức
+    public function getAllSanPhams1() {
         $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
                                 FROM san_pham sp 
-                                JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc 
+                                JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                WHERE sp.ma_danh_muc NOT IN (8, 9, 10)
                                 ORDER BY sp.ma_sp DESC');
+        return $sanPhams;
+    }
 
+    public function getAllSanPhams() {
+        $sanPhams = DB::select('SELECT sp.*, dm.ten_danh_muc 
+                                FROM san_pham sp 
+                                JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+                                ORDER BY sp.ma_sp DESC');
         return $sanPhams;
     }
 
@@ -92,6 +100,45 @@ class SanPham extends Model
             ORDER BY sp.ma_sp DESC
         ', ['ten_danh_muc' => '%chân váy%']);
 
+        return $sanPhams;
+    }
+
+    //lấy ra các sản phẩm có danh mục là trang sức
+    public function getTrangSucSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%trang sức%']);
+        return $sanPhams;
+    }
+
+    //lấy ra các sản phẩm có danh mục là tui
+    public function getTuiSanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%túi%']);
+        return $sanPhams;
+    }
+
+    //lấy ra các sản phẩm có danh mục là trang sức
+    public function getGiaySanPhams()
+    {
+        $sanPhams = DB::select('
+            SELECT sp.*, dm.ten_danh_muc
+            FROM san_pham sp
+            JOIN danh_muc dm ON sp.ma_danh_muc = dm.ma_danh_muc
+            WHERE dm.ten_danh_muc LIKE :ten_danh_muc
+            ORDER BY sp.ma_sp DESC
+        ', ['ten_danh_muc' => '%giày%']);
         return $sanPhams;
     }
 

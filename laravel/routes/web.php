@@ -41,6 +41,15 @@ Route::get('/quan', [SanPhamController::class, 'getQuanSanPhams'])->name('quan')
 //client hiển thị sản phẩm chân váy
 Route::get('/chan-vay', [SanPhamController::class, 'getChanVaySanPhams'])->name('chan-vay');
 
+//client hiển thị sản phẩm trang sức
+Route::get('/trang-suc', [SanPhamController::class, 'getTrangSucSanPhams'])->name('trang-suc');
+
+//client hiển thị sản phẩm túi
+Route::get('/tui', [SanPhamController::class, 'getTuiSanPhams'])->name('tui');
+
+//client hiển thị sản phẩm giày
+Route::get('/giay', [SanPhamController::class, 'getGiaySanPhams'])->name('giay');
+
 //login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');
