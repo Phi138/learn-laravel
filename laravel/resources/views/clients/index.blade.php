@@ -15,23 +15,23 @@
   </form>
 </section>
 
-<section class="mod-swiper h-fit">
-  <div class="container">
-    <div class="swiper swiper-1 slider-lazy pb-20">
+<section class="mod-swiper h-50vh lg:h-fit">
+  <div class="container h-full">
+    <div class="swiper swiper-1 slider-lazy pb-20 h-full">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
         <!-- Slides -->
         <div class="swiper-slide">
-        <img fetchpriority="high" class="w-full object-cover object-center" alt="name image"
-            src="images/slide/slide-1.jpg">
+          <img fetchpriority="high" class="w-full object-cover object-center h-full" alt="name image"
+              src="images/slide/slide-1.jpg">
         </div>
         <div class="swiper-slide">
-        <img class="w-full object-cover object-center" alt="name image"
-            src="images/slide/slide-2.jpg">
+          <img class="w-full object-cover object-center h-full" alt="name image"
+              src="images/slide/slide-2.jpg">
         </div>
         <div class="swiper-slide">
-        <img class="w-full object-cover object-center" alt="name image"
-            src="images/slide/slide-3.jpg">
+          <img class="w-full object-cover object-center h-full" alt="name image"
+              src="images/slide/slide-3.jpg">
         </div>
     </div>
     <!-- If we need pagination -->
@@ -50,7 +50,7 @@
     <h2 class="text-center">NEW ARRIVAL</h2>
     <div class="row">
       @foreach($sanPhams as $item)
-      <div class="col w-1/4">
+      <div class="col w-full md:w-1/2 lg:w-1/4">
         <a class="text-sm" href="{{route('detail', ['id'=>$item->ma_sp])}}">
           <img class="w-full object-cover" src="images/item/{{$item->ds_hinh_anh}}" alt="">
           <h3 class="text-sm">{{$item->ten_sp}}</h3>
