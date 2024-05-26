@@ -24,7 +24,10 @@ class DonHangController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Danh sách đơn hàng';
+
+        $sanPhams = $this->donHang->getAllSanPhams();
+        return view('admin.don-hang.index', compact('title', 'sanPhams'));
     }
 
     /**
@@ -54,17 +57,37 @@ class DonHangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request ,string $id)
     {
-        //
+        $title = 'Cập nhật trạng thái đơn hàng';
+        if(!empty($id)){
+            $sanPhamDetail = $this->donHang->getDetail($id);
+            if(!empty($sanPhamDetail[0])){
+                $request->session()->put('id', $id);
+                $sanPhamDetail = $sanPhamDetail[0];
+            } else {
+                return redirect()->route('don-hang.index')->with('msg', 'Đơn hàng không tồn tại');
+            }
+        } else {
+            return redirect()->route('don-hang.index')->with('msg', 'Liên kết không tồn tại');
+        }
+        return view('admin.don-hang.sua', compact('title', 'sanPhamDetail'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $id = session('id');
+        if(empty($id)){
+            return back()->with('msg', 'Liên kết không tồn tại');
+        }
+        $data = [
+            $request->order_status
+        ];
+        $this->donHang->updateSanPham($data, $id);
+        return back()->with('msg','Cập nhật trạng thái thành công');
     }
 
     /**

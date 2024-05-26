@@ -99,4 +99,14 @@ class CTDHController extends Controller
     {
         //
     }
+
+    //chi tiết đơn hàng ở admin
+    public function xem(string $id) {
+        $title = 'THÔNG TIN SẢN PHẨM';
+        
+        $orderDetails = $this->ctDonHang->getOrderDetails($id);
+        // dd($orderDetail);
+        // Trả về dữ liệu cho view
+        return view('admin.don-hang.xem', compact('title', 'orderDetails'));
+    }
 }

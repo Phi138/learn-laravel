@@ -8,7 +8,7 @@
     <li><a class="app-menu__item" href="{{route('san-pham.index')}}"><i
           class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
     </li>
-    <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-task'></i><span
+    <li><a class="app-menu__item" href="{{route('don-hang.index')}}"><i class='app-menu__icon bx bx-task'></i><span
           class="app-menu__label">Quản lý đơn hàng</span></a></li>
     <li>
       <a class="app-menu__item" href="{{route('danh-muc.index')}}"><i class='app-menu__icon bx bx-run'></i><span class="app-menu__label">Quản lý danh mục</span></a>

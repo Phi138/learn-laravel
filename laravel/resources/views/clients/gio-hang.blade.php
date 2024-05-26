@@ -11,7 +11,7 @@
         <div class="row">
             @foreach($items as $item)
             <div class="col w-1/3">
-                <img src="{{$item->ds_hinh_anh}}" alt="">
+                <img src="/images/item/{{$item->ds_hinh_anh}}" alt="">
                 <h2 class="text-lg">{{$item->ten_sp}}</h2>
                 <div class="flex">
                     <p class="line-through">{{number_format($item->gia_sp, 0, ',', '.')}} VND</p>

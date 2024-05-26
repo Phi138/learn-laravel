@@ -86,6 +86,19 @@ Route::middleware('auth.admin')->prefix('admin')->group(function(){
         Route::post('/update', [DanhMucController::class, 'update'])->name('update');
         Route::get('/xoa/{id}', [DanhMucController::class, 'destroy'])->name('delete');
     });
+
+    // đơn hàng
+    Route::prefix('don-hang')->name('don-hang.')->group(function(){
+        Route::get('/', [DonHangController::class, 'index'])->name('index');
+        Route::get('/them', [DanhMucController::class, 'create'])->name('create');
+        Route::post('/them', [DanhMucController::class, 'store'])->name('store');
+        Route::get('/sua/{id}', [DonHangController::class, 'edit'])->name('edit');
+        Route::post('/update', [DonHangController::class, 'update'])->name('update');
+        Route::get('/xoa/{id}', [DanhMucController::class, 'destroy'])->name('delete');
+
+        //xem chi tiết đơn hàng
+        Route::get('/xem/{id}', [CTDhController::class, 'xem'])->name('xem');
+    });
 });
 
 //thêm vào giỏ hàng

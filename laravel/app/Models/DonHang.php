@@ -23,4 +23,22 @@ class DonHang extends Model
 
         return $maDonHang;
     }
+
+    //lấy ra tất cả đơn hàng
+    public function getAllSanPhams(){
+        $sanPhams = DB::select('SELECT *
+                                FROM ' . $this->table . '
+                                ORDER BY ma_don_hang DESC');
+        return $sanPhams;
+    }
+
+    //chỉnh sửa trạng thái
+    public function updateSanPham($data, $id){
+        $data[] = $id;
+        return DB::update('UPDATE '.$this->table.' SET trang_thai=? where ma_don_hang = ?', $data);
+    }
+
+    public function getDetail($id){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE ma_don_hang = ?', [$id]);
+    }
 }
