@@ -50,7 +50,9 @@ class CTDonHang extends Model
                 'nguoi_dung.ho_ten',
                 'don_hang.dia_chi_giao_hang',
                 'don_hang.pttt',
-                'don_hang.tong_tien'
+                'don_hang.tong_tien',
+                'don_hang.trang_thai',
+                'don_hang.ngay_dat_hang'
             )
             ->where('chi_tiet_don_hang.ma_don_hang', $ma_don_hang)
             ->get();

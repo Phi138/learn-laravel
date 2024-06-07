@@ -53,6 +53,11 @@ Route::get('/giay', [SanPhamController::class, 'getGiaySanPhams'])->name('giay')
 //client hiển thị trang giới thiệu
 Route::get('/gioi-thieu', [HomeController::class, 'gioiThieu'])->name('gioi-thieu');
 
+//tfm kiếm bằng hình ảnh
+Route::get('/tim-kiem-hinh-anh', function(){
+    return view('clients.tim-kiem-hinh-anh');
+});
+
 //login
 Route::get('/dang-ky-dang-nhap', function(){
     return view('dang-ky-dang-nhap');

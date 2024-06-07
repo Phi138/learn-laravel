@@ -11,7 +11,7 @@
         <div class="row">
             @foreach($items as $item)
             <div class="col w-1/3">
-                <img src="/images/item/{{$item->ds_hinh_anh}}" alt="">
+                <img class="h-[400px]" src="/images/item/{{$item->ds_hinh_anh}}" alt="">
                 <h2 class="text-lg">{{$item->ten_sp}}</h2>
                 <div class="flex">
                     <p class="line-through">{{number_format($item->gia_sp, 0, ',', '.')}} VND</p>
@@ -26,24 +26,26 @@
             @endforeach
         </div>
     </div>
-  </div>
-    <div class="container">
-        <div class="row w-full fixed bottom-0 max-w-[1294px] bg-white shadow-bottom">
-            <div class="col w-1/3">
-                <p>
-                    <a class="btn btn-outline-primary" href="{{route('index')}}">TIẾP TỤC MUA HÀNG</a>
-                </p>
-            </div>
-            <div class="col w-1/3 text-center text-base">
-                <p class="font-bold">{{number_format($tongTien, 0, ',', '.')}} VND</p>
-                <p>Đã bao gồm thuế VAT</p>
-            </div>
-            <div class="col w-1/3">
-                <p>
-                    <a class="btn btn-primary float-right" href="{{route('van-chuyen')}}">THANH TOÁN</a>
-                </p>
-            </div>
+    <div class="row w-full bg-white pt-15">
+        <div class="col w-1/3">
+            <p>
+                <a class="btn btn-outline-primary" href="{{route('index')}}">TIẾP TỤC MUA HÀNG</a>
+            </p>
+        </div>
+        <div class="col w-1/3 text-center text-base">
+            <p class="font-bold">{{number_format($tongTien, 0, ',', '.')}} VND</p>
+            <p>Đã bao gồm thuế VAT</p>
+        </div>
+        <div class="col w-1/3">
+            <p>
+                @if ($tongSoLuong > 0)
+                    <a class="btn btn-primary float-right" href="{{ route('van-chuyen') }}">THANH TOÁN</a>
+                @else
+                    <a class="btn btn-primary float-right">THANH TOÁN</a>
+                @endif
+            </p>
         </div>
     </div>
+  </div>
 </section>
 @endsection

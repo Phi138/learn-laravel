@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\DonHang;
 use App\Models\CTDonHang;
 use App\Models\MucGioHang;
+use DB;
 use Carbon\Carbon;
 
 class DonHangController extends Controller
@@ -141,6 +142,11 @@ class DonHangController extends Controller
                 $item->kich_thuoc,
             ];
             $this->orderDetail->createClient($orderDetailData);
+        }
+
+        foreach ($items as $item) {
+            DB::update('UPDATE san_pham SET so_luong = so_luong - ? WHERE ma_sp = ?', 
+               [$item->so_luong, $item->ma_sp]);
         }
 
         //xóa các sản phẩm trong mục giỏ hàng có tên người dùng = với session tên người dùng

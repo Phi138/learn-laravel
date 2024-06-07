@@ -42,7 +42,13 @@ class CTDHController extends Controller
         }
 
         // Trả về dữ liệu cho view
-        return view('clients.order-id', compact('title', 'orderDetails', 'orderTotalQuantities', 'tongTiens'));
+        if (!$customerOrders->isEmpty()) {
+            return view('clients.order-id', compact('title', 'orderDetails', 'orderTotalQuantities', 'tongTiens'));
+        }
+        else {
+            $title = 'Bạn chưa có đơn hàng nào';
+            return view('clients.don-hang', compact('title'));
+        }
     }
     /**
      * Display a listing of the resource.

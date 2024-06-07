@@ -10,7 +10,7 @@
     @endif
     <div class="row">
         <div class="col w-1/2">
-            <img src="/images/item/{{$sanPhamDetail->ds_hinh_anh}}" alt="">
+            <img class="h-[500px]" src="/images/item/{{$sanPhamDetail->ds_hinh_anh}}" alt="">
         </div>
         <div class="col w-1/2">
             <h1 class="text-h1">{{$sanPhamDetail->ten_sp}}</h1>

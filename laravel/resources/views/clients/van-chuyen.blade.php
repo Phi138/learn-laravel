@@ -77,7 +77,7 @@
                     @foreach($items as $item)
                     <div class="row">
                         <div class="col w-22p">
-                            <img src="{{$item->ds_hinh_anh}}" alt="">
+                            <img src="/images/item/{{$item->ds_hinh_anh}}" alt="">
                         </div>
                         <div class="col w-78p text-base">
                             <p class="font-semibold mb-1">{{$item->ten_sp}}</p>

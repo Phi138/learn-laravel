@@ -8,8 +8,11 @@
     <h1 class="text-3xl">{{$title}}</h1>
     @foreach ($orderDetails as $madonhang => $orderDetail)
     <div class="card mb-30">
-        <div class="card-header mb-10">
-            Mã đơn hàng #{{ $madonhang }}
+        <div class="card-header mb-10 font-bold">
+            Mã đơn hàng #{{ $madonhang }}: {{$orderDetail[0]->trang_thai}}
+        </div>
+        <div class="card-header mb-10 font-bold">
+          Ngày đặt hàng: {{ date('d-m-Y H:i', strtotime($orderDetail[0]->ngay_dat_hang)) }}
         </div>
         @foreach ($orderDetail as $item)
         <div class="row mb-8">
@@ -26,25 +29,25 @@
           </div>
         </div>
         @endforeach
-    </div>
-    <div class="row">
-      <div class="col w-1/2">
-        <h3 class="text-xl">ĐỊA CHỈ GIAO HÀNG</h3>
-        <p>{{$orderDetail[0]->ho_ten}}</p>
-        <p>{{$orderDetail[0]->dia_chi_giao_hang}}</p>
-        <p>{{$orderDetail[0]->sdt}}</p>
       </div>
-      <div class="col w-1/2">
-        <h3 class="text-xl">CHI TIẾT THANH TOÁN</h3>
-        <div class="row">
-          <div class="col w-1/2">
-            <p>{{ $orderTotalQuantities[$madonhang] }} sản phẩm</p>
-            <p>Vận chuyển</p>
-            <p>Tổng</p>
-          </div>
-          <div class="col w-1/2">
-            <p>{{ number_format($tongTiens[$madonhang], 0, ',', '.') }} VND</p>
-            <p>30.000 VND</p>
+      <div class="row">
+        <div class="col w-1/2">
+          <h3 class="text-xl">ĐỊA CHỈ GIAO HÀNG</h3>
+          <p>{{$orderDetail[0]->ho_ten}}</p>
+          <p>{{$orderDetail[0]->dia_chi_giao_hang}}</p>
+          <p>{{$orderDetail[0]->sdt}}</p>
+        </div>
+        <div class="col w-1/2">
+          <h3 class="text-xl">CHI TIẾT THANH TOÁN</h3>
+          <div class="row">
+            <div class="col w-1/2">
+              <p>{{ $orderTotalQuantities[$madonhang] }} sản phẩm</p>
+              <p>Vận chuyển</p>
+              <p>Tổng</p>
+            </div>
+            <div class="col w-1/2">
+              <p>{{ number_format($tongTiens[$madonhang], 0, ',', '.') }} VND</p>
+              <p>30.000 VND</p>
             <p>{{ number_format($orderDetail[0]->tong_tien, 0, ',', '.') }} VND</p>
           </div>
         </div>
@@ -52,6 +55,7 @@
         <p>{{$orderDetail[0]->pttt}}</p>
       </div>
     </div>
+    <div class="w-full h-[1px] bg-black my-15"></div>
     @endforeach
     <p>
         <a href="{{route('index')}}" class="btn btn-primary">VỀ TRANG CHỦ</a>

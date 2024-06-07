@@ -1,10 +1,16 @@
+<style>
+  .mod-swiper-banner {
+    height: calc(100vh - 161px);
+  }
+</style>
+
 @extends('clients.layout')
 
 @section('title', $title)
 
 @section('content')
 
-<section class="mod-search py-15">
+<section class="mod-search pb-15">
   <form class="flex justify-center items-center gap-5" role="form">
     <div class="form-group border-b-1 border-black">
       <input class="form-control py-4 px-8" type="text" name="key" placeholder="Tìm kiếm..." value="{{$key}}">
@@ -16,7 +22,7 @@
 </section>
 
 <section class="mod-swiper h-50vh lg:h-fit">
-  <div class="container h-full">
+  <div class="mod-swiper-banner">
     <div class="swiper swiper-1 slider-lazy pb-20 h-full">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
@@ -65,8 +71,3 @@
   </div>
 </section>
 @endsection
-
-@if(Session::has('ten_nguoi_dung') && session('flag') == 1)
-  <?php Session::put('flag', 0); ?>
-  <script>alert("Đăng nhập thành công!");</script>
-@endif

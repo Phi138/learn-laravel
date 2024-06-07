@@ -1,11 +1,11 @@
 <head>
     @vite('resources/css/app.css')
 </head>
-<h2>Sign in/up Form</h2>
+<h2>Đăng nhập/Đăng ký</h2>
     @if (session('msg'))
         <div class="alert alert-success">{{session('msg')}}</div>
     @endif
-    <div class="container h-[700px]" id="container">
+    <div class="container h-[567px]" id="container">
         <div class="form-container sign-up-container">
             <form class="text-left" action="{{route('user-store')}}" method="POST">
                 <h1>Đăng ký</h1>
@@ -50,14 +50,14 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
-                    <h1>Welcome Back!</h1>
-                    <p>To keep connected with us please login with your personal info</p>
-                    <button class="ghost" id="signIn">Sign In</button>
+                    <h1>Chào mừng trở lại!</h1>
+                    <p>Để duy trì kết nối với chúng tôi vui lòng đăng nhập bằng thông tin cá nhân của bạn</p>
+                    <button class="ghost" id="signIn">Đăng nhập</button>
                 </div>
                 <div class="overlay-panel overlay-right">
-                    <h1>Hello, Friend!</h1>
-                    <p>Enter your personal details and start journey with us</p>
-                    <button class="ghost" id="signUp">Sign Up</button>
+                    <h1>Chào bạn!</h1>
+                    <p>Nhập thông tin cá nhân của bạn và bắt đầu hành trình với chúng tôi</p>
+                    <button class="ghost" id="signUp">Đăng ký</button>
                 </div>
             </div>
         </div>
@@ -77,8 +77,7 @@ body {
     align-items: center;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
+    padding: 20px;
 }
 
 h1 {
@@ -149,8 +148,8 @@ form {
 input {
     background-color: #eee;
     border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
+    padding: 6px 15px;
+    margin-bottom: 8px;
     width: 100%;
 }
 

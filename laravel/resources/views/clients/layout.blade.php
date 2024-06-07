@@ -43,19 +43,19 @@
                             <span class="icon-arrow-menu absolute top-3 right-0 block"><span
                                 class="icomoon icon-chevron-down block"></span></span>
                         </a>
-                        <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
+                        <div id="dropdown-menu-3" class="w-[141px] dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 lg:opacity-0 down_lg:hidden">
                             <ul class="list-inline list-none pl-0 mb-0">
                                 <li class="">
-                                    <a href="{{route('ao')}}">Áo</a>
+                                    <a class="block" href="{{route('ao')}}">Áo</a>
                                 </li>
                                 <li class="">
-                                    <a href="{{route('quan')}}">Quần</a>
+                                    <a class="block" href="{{route('quan')}}">Quần</a>
                                 </li>
                                 <li class="">
-                                    <a href="{{route('chan-vay')}}">Chân váy</a>
+                                    <a class="block" href="{{route('chan-vay')}}">Chân váy</a>
                                 </li>
                                 <li class="mb-0">
-                                    <a href="{{route('dam')}}">Đầm</a>
+                                    <a class="block" href="{{route('dam')}}">Đầm</a>
                                 </li>
                             </ul>
                         </div>
@@ -70,13 +70,13 @@
                         <div id="dropdown-menu-3" class="dropdown-menu main-menu-dropdown rounded-0 border-0 lg:absolute top-full lg:bg-white p-8 pb-0 lg:opacity-0 down_lg:hidden">
                             <ul class="list-inline list-none pl-0">
                                 <li>
-                                    <a href="{{route('trang-suc')}}">Trang sức</a>
+                                    <a class="block" href="{{route('trang-suc')}}">Trang sức</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('tui')}}">Túi</a>
+                                    <a class="block" href="{{route('tui')}}">Túi</a>
                                 </li>
                                 <li class="mb-0">
-                                    <a href="{{route('giay')}}">Giày</a>
+                                    <a class="block" href="{{route('giay')}}">Giày</a>
                                 </li>
                             </ul>
                         </div>
@@ -121,31 +121,33 @@
         </main>
 
         <footer class="bg-white text-black py-10">
-            <div class="container bg-black text-white">
-                <div class="row">
-                    <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
-                        <img class="w-13 mx-auto mb-8" src="/images/footer/return.png" alt="">
-                        <p class="text-center font-bold">7 NGÀY ĐỔI SẢN PHẨM NGUYÊN GIÁ</p>
-                        <p class="text-center">Đổi trả sản phẩm trong 7 ngày</p>
-                    </div>
-                    <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
-                        <img class="w-13 mx-auto mb-8" src="/images/footer/support.png" alt="">
-                        <p class="text-center font-bold">HOTLINE 1900 3060</p>
-                        <p class="text-center">8h00 - 17h00, T2 - T7 (Giờ hành chính)</p>
-                    </div>
-                    <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
-                        <img class="w-13 mx-auto mb-8" src="/images/footer/store.png" alt="">
-                        <p class="text-center font-bold">HỆ THỐNG CỬA HÀNG</p>
-                        <p class="text-center">120 cửa hàng trên toàn hệ thống</p>
-                    </div>
-                    <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
-                        <img class="w-13 mx-auto mb-8" src="/images/footer/shipping.png" alt="">
-                        <p class="text-center font-bold">VẬN CHUYỂN</p>
-                        <p class="text-center">Đồng giá 30k toàn quốc</p>
+            <div class="bg-black text-white">
+                <div class="container">
+                    <div class="row text-sm">
+                        <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
+                            <img class="w-13 mx-auto mb-6" src="/images/footer/return.png" alt="">
+                            <p class="text-center font-bold mb-2">7 NGÀY ĐỔI SẢN PHẨM NGUYÊN GIÁ</p>
+                            <p class="text-center mb-2">Đổi trả sản phẩm trong 7 ngày</p>
+                        </div>
+                        <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
+                            <img class="w-13 mx-auto mb-6" src="/images/footer/support.png" alt="">
+                            <p class="text-center font-bold mb-2">HOTLINE 1900 3060</p>
+                            <p class="text-center mb-2">8h00 - 17h00, T2 - T7 (Giờ hành chính)</p>
+                        </div>
+                        <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
+                            <img class="w-13 mx-auto mb-6" src="/images/footer/store.png" alt="">
+                            <p class="text-center font-bold mb-2">HỆ THỐNG CỬA HÀNG</p>
+                            <p class="text-center mb-2">120 cửa hàng trên toàn hệ thống</p>
+                        </div>
+                        <div class="col w-full py-8 md:w-1/2 xl:w-1/4">
+                            <img class="w-13 mx-auto mb-6" src="/images/footer/shipping.png" alt="">
+                            <p class="text-center font-bold mb-2">VẬN CHUYỂN</p>
+                            <p class="text-center mb-2">Đồng giá 30k toàn quốc</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="container pt-8">
+            <div class="container pt-12">
                 <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                       <div>
@@ -157,7 +159,7 @@
                       <div>
                         <h3 class="text-lg font-bold mb-4">Liên kết nhanh</h3>
                         <ul class="text-gray-400 space-y-2">
-                          <li><a href="{{route('index')}}">Trang chủ</a></li>
+                          <li class="mb-0"><a href="{{route('index')}}">Trang chủ</a></li>
                           <li><a href="#">Sản phẩm</a></li>
                           <li><a href="#">Về chúng tôi</a></li>
                           <li><a href="#">Liên hệ</a></li>
@@ -169,7 +171,7 @@
                           Phước Tân, Nha Trang, Khánh Hòa
                         </p>
                         <p class="text-gray-400">
-                          Điện thoại: 0389 254 720
+                          Điện thoại: 1900 3060
                         </p>
                       </div>
                       <div>
@@ -194,7 +196,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="mt-8 text-center text-sm text-gray-400">
+                    <div class="text-center text-sm text-gray-400">
                       &copy; 2024 Elise. Bản quyền thuộc về công ty.
                     </div>
                   </div>
